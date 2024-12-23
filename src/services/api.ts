@@ -27,7 +27,7 @@ const api = createApi({
 
         const query = new URLSearchParams(params).toString()
 
-        return `products?${query}`
+        return `products/?${query}`
       }
     }),
     getProduct: builder.query<Product, string>({

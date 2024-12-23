@@ -1,41 +1,52 @@
 import styled from "styled-components";
+import { colors } from "../../styles";
 
 export const Home = styled.div`
-  margin-top: -160px;
+  margin-top: -60px;
+`
+
+export const Hero = styled.div`
+  display: flex;
+  gap: 2px;
+
+  img.hero {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      align-items: start;
+      gap: 2px;
+      padding: 80px 2px;
+    }
+  }
 `
 
 export const Carousel = styled.div`
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
+  width: 70vw;
 
   img {
     width: 100%;
   }
 `
 
-export const ArrowButton = styled.button`
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
+export const SlideButton = styled.button`
+  width: 6px;
+  height: 6px;
+  border: 1px solid ${colors.black};
+  border-radius: 50%;
   cursor: pointer;
 
-  &:first-of-type {
-    left: 20px;
-    transform: rotate(180deg);
-  }
-
-  &:last-of-type {
-    right: 20px;
+  &.active {
+    background-color: ${colors.black};
   }
 `
 
-export const ProductTypes = styled.div`
+export const ProductCategories = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,12 +60,12 @@ export const ProductTypes = styled.div`
   }
 `
 
-export const Types = styled.div`
+export const Categories = styled.div`
   width: 100%;
 
   ul {
-    display: inline-flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 4px;
 
     li {
@@ -71,6 +82,10 @@ export const Types = styled.div`
         text-transform: uppercase;
         font-weight: 200;
         cursor: pointer;
+
+        img {
+          width: 100%;
+        }
 
         &:hover {
           font-weight: 700;

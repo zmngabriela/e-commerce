@@ -6,7 +6,7 @@ export const Description = styled.div`
   text-align: center;
 
   p {
-    font-size: .9em;
+    font-size: .8em;
     font-weight: 100;
     margin-bottom: 40px;
   }

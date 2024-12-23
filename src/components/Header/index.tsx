@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 import { RootState } from "../../store"
-import { updateFilter, updateTerm } from "../../store/reducers/filter"
+import { setCategory, setTerm } from "../../store/reducers/filter"
 
 import cart from '../../assets/icons/cart.png'
 import search from '../../assets/icons/search.png'
@@ -43,8 +43,8 @@ const Header = () => {
 
   const categoryFilter = (category: RootState['filter']['category']) => {
     navigate('/shop')
-    dispatch(updateFilter({ category }))
-    dispatch(updateTerm(''))
+    dispatch(setCategory(category))
+    dispatch(setTerm(''))
   }
 
   const filterAndClose = (category: number) => {
@@ -102,7 +102,7 @@ const Header = () => {
               type="text"
               placeholder="Search"
               onChange={(e) => {
-                dispatch(updateTerm(e.target.value))
+                dispatch(setTerm(e.target.value))
                 navigate('/shop')
               }}
             />

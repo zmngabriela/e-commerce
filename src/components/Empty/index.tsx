@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import ProductComponent from "../ProductCard"
 
 import { useGetProductsQuery } from "../../services/api"
-import { updateTerm } from "../../store/reducers/filter"
+import { setTerm } from "../../store/reducers/filter"
 
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
@@ -26,7 +26,7 @@ const Empty = ({ noProductsMessage, categoryTitle, categoryFilter }: Props) => {
 
   const returnShop = () => {
     navigate('/shop')
-    dispatch(updateTerm(''))
+    dispatch(setTerm(''))
   }
 
   return (

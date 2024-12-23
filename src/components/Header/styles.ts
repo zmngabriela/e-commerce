@@ -65,7 +65,6 @@ export const Links = styled.ul`
 `
 
 export const Navbar = styled.div`
-  height: 50px;
   display: grid;
   grid-template-columns: 3fr 1fr 3fr;
   align-items: top;
