@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
+import NavbarAside from "../NavbarAside"
+
 import { RootState } from "../../store"
-import { setCategory, setTerm } from "../../store/reducers/filter"
+import { setCategory, setCurrentPage, setOffset, setTerm } from "../../store/reducers/filter"
+import { setCartOpen } from "../../store/reducers/cart"
 
 import cart from '../../assets/icons/cart.png'
 import search from '../../assets/icons/search.png'
@@ -17,11 +20,23 @@ import * as S from "./styles"
 const Header = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const { items: itemsCart } = useSelector((state: RootState) => state.cart)
+  const searchInput = useRef<HTMLInputElement | null>(null)
 
   const [searchActive, setSearchActive] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const searchInput = useRef<HTMLInputElement | null>(null)
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -41,19 +56,17 @@ const Header = () => {
     }
   }, [searchActive]);
 
-  const categoryFilter = (category: RootState['filter']['category']) => {
+  const categoryFilter = useCallback((category: RootState['filter']['category']) => {
     navigate('/shop')
     dispatch(setCategory(category))
     dispatch(setTerm(''))
-  }
-
-  const filterAndClose = (category: number) => {
-    categoryFilter(category)
-    setMenuOpen(!menuOpen)
-  }
+    dispatch(setCartOpen(false))
+    dispatch(setOffset(0))
+    dispatch(setCurrentPage(1))
+  }, [navigate, dispatch])
 
   return (
-    <S.Header>
+    <S.Header scrollY={scrollY}>
       <S.UpperLine>
         <p>free shipping from 100€ and free return in all orders</p>
       </S.UpperLine>
@@ -88,7 +101,7 @@ const Header = () => {
           </li>
           <li>
             <button type="button" onClick={() => navigate('/about')}>
-              About me
+              About the dev
             </button>
           </li>
         </S.Links>
@@ -127,45 +140,9 @@ const Header = () => {
           </button>
         </S.AuxiliaryMenu>
       </S.Navbar>
-      <S.NavbarOpen $isopen={menuOpen}>
-        <div>
-          <div className="logo">
-            <h1><Link to='/'>Brand</Link></h1>
-          </div>
-          <S.Links>
-            <li>
-              <button type="button" onClick={() => filterAndClose(1)}>
-                Dress up
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={() => filterAndClose(2)}>
-                Eletronics
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={() => filterAndClose(3)}>
-                Furniture
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={() => filterAndClose(0)}>
-                Shop all
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={() => navigate('/about')}>
-                About me
-              </button>
-            </li>
-          </S.Links>
-        </div>
-        <div>
-
-        </div>
-      </S.NavbarOpen>
+      <NavbarAside categoryFilter={categoryFilter} setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
     </S.Header>
   )
 }
 
-export default Header
+export default memo(Header)

@@ -7,11 +7,11 @@ type Props = {
 
 const Breadcrumb = ({ item }: Props) => (
   <S.Breadcrumb>
-      <Link to={'/shop'}>Shop</Link>
+      <Link to={'/shop'} className="bold">Shop</Link>
       {' / '}
       <Link to={'/shop'}>{item.category.name}</Link>
       {' / '}
-      <span>{item.title}</span>
+      <span className="limit-characters">{item.title}</span>
   </S.Breadcrumb>
 )
 

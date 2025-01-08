@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Product = styled.li`
   p {
-    font-size: .8em;
+    font-size: 12px;
     font-weight: 200;
 
     &.title:hover {
@@ -15,7 +15,6 @@ export const Product = styled.li`
 export const ProductInfo = styled.div`
   position: relative;
   overflow: hidden;
-  width: 100%;
 
   img.product-image {
     width: 100%;
@@ -50,16 +49,6 @@ export const Action = styled.div`
     cursor: pointer;
     z-index: 2;
   }
-
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    img {
-      width: 16px;
-    }
-  }
 `
 
 export const LinkStyle = styled(Link)`
@@ -73,8 +62,17 @@ export const Cart = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 8px;
-`
 
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
+  }
+`
 
 export const Sizes = styled.ul`
   display: flex;
@@ -82,8 +80,7 @@ export const Sizes = styled.ul`
 
   li {
     display: flex;
-    font-size: .8em;
-    font-weight: 200;
+    font-size: 12px;
     cursor: pointer;
 
     &:hover, &.size-selected {

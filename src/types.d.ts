@@ -9,7 +9,9 @@ declare type Product = {
     name: string
     image: string
   },
-  sizes: string[]
+  sizes: string[],
+  creationAt: string,
+  updatedAt: string
 }
 
 declare type Category = {

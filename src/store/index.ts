@@ -1,13 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 import cartReducer from "./reducers/cart";
 import filterReducer from "./reducers/filter";
 import favoriteReducer from "./reducers/favorites";
+import alertReducer from "./reducers/alert";
+
 import api from "../services/api";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   filter: filterReducer,
   favorites: favoriteReducer,
+  alert: alertReducer,
   [api.reducerPath]: api.reducer
 }
 )

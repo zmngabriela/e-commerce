@@ -4,22 +4,14 @@ import { breakpoints } from '../../styles'
 export const Products = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 24px 8px;
+  gap: 16px 2px;
   margin: 40px 0;
-
-  @media (max-width: ${breakpoints.desktop}) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (max-width: ${breakpoints.phone}) {
+  @media (max-width: ${breakpoints.mobile}) {
     grid-template-columns: 1fr;
-  }
-
-  &.smaller {
-    grid-template-columns: 1fr 1fr 1fr;
   }
 `

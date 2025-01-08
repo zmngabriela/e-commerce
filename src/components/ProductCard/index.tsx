@@ -1,18 +1,20 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
+import { addCart, setCartOpen } from '../../store/reducers/cart'
+import { setAlert } from '../../store/reducers/alert'
+import { favorite } from '../../store/reducers/favorites'
 
 import { RootState } from '../../store'
-import { addCart } from '../../store/reducers/cart'
-import { favorite } from '../../store/reducers/favorites'
 import { formatToEuro } from "../../utils/index"
 
 import cart from '../../assets/icons/cart.png';
 import notFavorited from '../../assets/icons/favorite.png'
 import favorited from '../../assets/icons/favorited.png'
-import fallbackImage from '../../assets/images/fallback-img.png';
+import fallbackImage from '../../assets/images/fallback.png';
 
 import * as S from './styles'
-import { useState } from 'react'
 
 export type Props = {
   item: Product
@@ -33,30 +35,35 @@ function ProductCard ({ item }: Props) {
         product: item.product,
         selectedSize: item.selectedSize
       }))
+      dispatch(setCartOpen(true))
     } else {
-      alert('Please select the size')
+      dispatch(setAlert({
+        alertOpen: true,
+        title: 'Cart',
+        message: 'Please select a size.'
+      }))
     }
   }
 
   return (
     <S.Product>
       <S.ProductInfo>
-          <img
-            src={imgSrc}
-            alt=""
-            className='product-image'
-            onError={(e) => {
-              e.currentTarget.src = fallbackImage;
-            }}
-          />
+        <LazyLoadImage
+          src={imgSrc}
+          alt={item.title}
+          className='product-image'
+          onError={(e) => {
+            e.currentTarget.src = fallbackImage;
+          }}
+        />
         <S.Action>
           <img
             src={isFav ? favorited : notFavorited}
-            alt=""
+            alt="Favorite"
             className="fav-icon"
             onClick={() => dispatch(favorite(item))}
           />
-          <S.LinkStyle to={`/shop/${item.id}`}></S.LinkStyle>
+          <S.LinkStyle to={`/shop/product/${item.id}`}></S.LinkStyle>
           <S.Cart>
             <S.Sizes>
               {(item.sizes ?? ['s', 'm', 'l']).map(size => (
@@ -74,7 +81,7 @@ function ProductCard ({ item }: Props) {
                 product: item,
                 selectedSize: selectedSize
               })}>
-              <img src={cart} alt="" />
+              <img src={cart} alt="Add to cart" />
             </button>
           </S.Cart>
         </S.Action>

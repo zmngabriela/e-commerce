@@ -18,16 +18,18 @@ const api = createApi({
       query: (filters) => {
         const params: { [key: string]: any } = {}
 
+        if (filters.limit) {
+          params.limit = filters.limit
+          params.offset = filters.offset
+        }
         if (filters.title) params.title = filters.title
         if (filters.price_min) params.price_min = filters.price_min
         if (filters.price_max) params.price_max = filters.price_max
         if (filters.categoryId) params.categoryId = filters.categoryId
-        if (filters.limit) params.limit = filters.limit
-        if (filters.offset) params.offset = filters.offset
 
         const query = new URLSearchParams(params).toString()
 
-        return `products/?${query}`
+        return `products?${query}`
       }
     }),
     getProduct: builder.query<Product, string>({

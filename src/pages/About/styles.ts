@@ -1,23 +1,21 @@
 import styled from "styled-components";
+import { colors } from "../../styles";
 
-export const Description = styled.div`
-  width: 70%;
-  margin: 0 auto;
-  text-align: center;
+export const Text = styled.div`
+  font-size: 12px;
+  margin-bottom: 40px;
 
-  p {
-    font-size: .8em;
-    font-weight: 100;
-    margin-bottom: 40px;
+  a {
+    color: ${colors.grey}
   }
+`
 
-  div {
-    display: inline-flex;
-    gap: 16px;
-    margin-bottom: 24px;
+export const Icons = styled.div`
+  display: inline-flex;
+  gap: 16px;
+  margin-bottom: 24px;
 
-    img {
-      width: 24px;
-    }
+  img {
+    width: 24px;
   }
 `

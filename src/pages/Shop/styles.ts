@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Btn } from "../../styles";
+import { Btn, colors } from "../../styles";
 
 export const Shop = styled.div`
   overflow: hidden;
@@ -10,7 +10,7 @@ export const Shop = styled.div`
     background-color: transparent;
     border: none;
     text-transform: uppercase;
-    font-size: .8em;
+    font-size: 12px;
     font-weight: 200;
     cursor: pointer;
   }
@@ -39,10 +39,22 @@ export const Pagination = styled.ul`
   justify-content: center;
   align-items: end;
   gap: 8px;
-  cursor: pointer;
+  margin-top: 80px;
 
   ${Btn} {
-    font-size: .7em;
+    font-size: 12px;
+    border: none;
+
+    &.active {
+      background-color: ${colors.black};
+      color: ${colors.white};
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: ${colors.lightGrey};
+      cursor: auto;
+    }
   }
 `
 

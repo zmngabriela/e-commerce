@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { useQuery } from "../../utils"
 
 type FilterState = {
   term?: string
   category: number
-  sortBy?: 'asc' | 'desc' | ''
+  sortBy?: 'asc' | 'desc' | 'latest' | ''
   limit: number
   offset: number
+  currentPage: number
   priceMin?: number
   priceMax?: number
   filterOpen: boolean
@@ -18,6 +18,7 @@ const initialState: FilterState = {
   sortBy: '',
   limit: 8,
   offset: 0,
+  currentPage: 1,
   priceMin: undefined,
   priceMax: undefined,
   filterOpen: false
@@ -33,7 +34,7 @@ const filterSlice = createSlice({
     setCategory: (state, action: PayloadAction<number>) => {
       state.category = action.payload
     },
-    setSortBy: (state, action: PayloadAction<'asc' | 'desc' | ''>) => {
+    setSortBy: (state, action: PayloadAction<'asc' | 'desc'| 'latest' | ''>) => {
       state.sortBy = action.payload
     },
     setLimit: (state, action: PayloadAction<number>) => {
@@ -41,6 +42,9 @@ const filterSlice = createSlice({
     },
     setOffset: (state, action: PayloadAction<number>) => {
       state.offset = action.payload
+    },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload
     },
     setPriceMin: (state, action: PayloadAction<number>) => {
       state.priceMin = action.payload
@@ -54,6 +58,6 @@ const filterSlice = createSlice({
   }
 })
 
-export const { setTerm, setCategory, setSortBy, setLimit, setOffset, setPriceMin, setPriceMax, setFilterOpen } = filterSlice.actions
+export const { setTerm, setCategory, setSortBy, setLimit, setOffset, setCurrentPage, setPriceMin, setPriceMax, setFilterOpen } = filterSlice.actions
 export default filterSlice.reducer
 

@@ -11,7 +11,7 @@ export const colors = {
 export const breakpoints = {
   desktop: '1024px',
   tablet: '768px',
-  phone: '425px'
+  mobile: '425px'
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -28,16 +28,41 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${colors.white};
     padding-bottom: 80px;
-    margin-top: 160px;
+    font-weight: 200;
+    font-size: 12px;
   }
 `
 
-export const Container = styled.main`
-    width: 90%;
+export const Container = styled.div`
+    width: 80%;
     margin: 0 auto;
+    margin-top: 80px;
 
-    @media (max-width: 1024px) {
-      max-width: 80%;
+    &.central {
+      display: flex;
+      flex-direction: column;
+      justify-content: top;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    &.narrow {
+      width: 60%;
+    }
+
+    &.marginTop {
+      margin-top: 160px;
+    }
+
+    @media (max-width: ${breakpoints.desktop}) {
+      width: 90%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      &.narrow {
+        width: 80%;
+      }
     }
   }
 `
@@ -52,7 +77,8 @@ export const Btn = styled.button`
   border: 1px solid ${colors.black};
   background-color: transparent;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 12px;
+  font-weight: 400;
   white-space: nowrap;
   cursor: pointer;
 
@@ -63,7 +89,7 @@ export const Btn = styled.button`
 
   &.arrow {
     img {
-      width: 14px;
+      width: 12px;
       transform: rotate(-40deg);
     }
 
@@ -82,7 +108,7 @@ export const Input = styled.input`
   border: 1px solid ${colors.black};
   background-color: ${colors.white};
   color: ${colors.black};
-  font-size: .9em;
+  font-size: 12px;
   font-weight: 200;
 
   &:focus {
@@ -93,6 +119,10 @@ export const Input = styled.input`
     width: 100%;
     background-color: transparent;
     border: none;
-    font-size: .8em;
   }
+`
+
+export const ErrorText = styled.p`
+  font-size: 12px;
+  font-weight: 200;
 `

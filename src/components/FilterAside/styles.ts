@@ -1,15 +1,11 @@
 import styled from "styled-components"
 import { breakpoints, colors } from "../../styles"
 
-type FilterProps = {
-  $isopen: boolean
-}
-
-export const FilterOpen = styled.div<FilterProps>`
+export const FilterAside = styled.div<{ filterOpen: boolean }>`
   position: fixed;
   top: 0;
   right: 0;
-  width: 25%;
+  width: 300px;
   height: 100%;
   z-index: 1;
 
@@ -17,11 +13,11 @@ export const FilterOpen = styled.div<FilterProps>`
   flex-direction: column;
   gap: 40px;
   padding: 96px 32px 0;
-  text-transform: uppercase;
   background-color: ${colors.white};
+  text-transform: uppercase;
 
   transition: transform .3s ease-in-out;
-  transform: ${props => props.$isopen ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${props => props.filterOpen ? 'translateX(0)' : 'translateX(100%)'};
 
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
@@ -29,7 +25,6 @@ export const FilterOpen = styled.div<FilterProps>`
 
   select {
     background-color: transparent;
-    text-transform: uppercase;
     padding: 2px;
     cursor: pointer;
 
@@ -63,8 +58,7 @@ export const OptionOpen = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: .7em;
-  font-weight: 200;
+  font-size: 12px;
 
   input.input-price {
     width: 100%;

@@ -7,10 +7,12 @@ type CartItem = {
 
 type CartState = {
   items: CartItem[]
+  cartOpen: boolean
 }
 
 const initialState: CartState = {
-  items: []
+  items: [],
+  cartOpen: false
 }
 
 const cartSlice = createSlice({
@@ -24,6 +26,9 @@ const cartSlice = createSlice({
     removeCart: (state, action: PayloadAction<Product>) => {
       const product = action.payload
       state.items = state.items.filter((item) => item.product.id !== product.id)
+      if (state.items.length === 0) {
+        state.cartOpen = false
+      }
     },
     removeUnitCart: (state, action: PayloadAction<CartItem>) => {
       const { product, selectedSize } = action.payload
@@ -42,9 +47,12 @@ const cartSlice = createSlice({
       if (productFound) {
         productFound.selectedSize = action.payload.selectedSize
       }
+    },
+    setCartOpen: (state, action: PayloadAction<boolean>) => {
+      state.cartOpen = action.payload
     }
   }
 })
 
-export const { addCart, removeCart, removeUnitCart, updateSize } = cartSlice.actions
+export const { addCart, removeCart, removeUnitCart, updateSize, setCartOpen } = cartSlice.actions
 export default cartSlice.reducer

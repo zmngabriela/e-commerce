@@ -10,7 +10,7 @@ export const Footer = styled.footer`
     gap: 40px;
   }
 
-  @media (max-width: ${breakpoints.phone}) {
+  @media (max-width: ${breakpoints.mobile}) {
     position: relative;
     display: flex;
     gap: 0;
@@ -34,8 +34,7 @@ export const Links = styled.div`
     justify-content: top;
 
     li {
-      font-size: .8em;
-      font-weight: 200;
+      font-size: 12px;
 
       &:hover {
         font-weight: 400;
@@ -63,8 +62,7 @@ export const Newsletter = styled.div`
   }
 
   p {
-    font-size: .8em;
-    font-weight: 200;
+    font-size: 12px;
     color: ${colors.black};
   }
 
@@ -115,7 +113,7 @@ export const Image = styled.div`
       width: 200px;
     }
 
-    @media (max-width: ${breakpoints.phone}) {
+    @media (max-width: ${breakpoints.mobile}) {
       width: 125px;
     }
   }

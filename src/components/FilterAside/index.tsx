@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import close from '../../assets/icons/close.png'
-import * as S from './styles'
-import { Input } from '../../styles'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { setFilterOpen, setLimit, setOffset, setPriceMax, setPriceMin, setSortBy } from '../../store/reducers/filter'
 import { RootState } from '../../store'
 
-const Filter = () => {
+import close from '../../assets/icons/close.png'
+
+import { Input } from '../../styles'
+import * as S from './styles'
+
+const FilterAside = () => {
   const dispatch = useDispatch()
   const { limit, filterOpen } = useSelector((state: RootState) => state.filter)
-
   const filterRef = useRef<HTMLDivElement | null>(null)
+
   const [sortByOpen, setSortByOpen] = useState(false)
   const [priceOpen, setPriceOpen] = useState(false)
   const [productsPageOpen, setProductsPageOpen] = useState(false)
@@ -18,7 +21,7 @@ const Filter = () => {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
-        dispatch(setFilterOpen(false))
+        closeFilter()
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -27,12 +30,19 @@ const Filter = () => {
     }
   }, [])
 
+  const closeFilter = () => {
+    dispatch(setFilterOpen(false))
+    setSortByOpen(false)
+    setPriceOpen(false)
+    setProductsPageOpen(false)
+  }
+
   return (
-    <S.FilterOpen
-      $isopen={filterOpen}
+    <S.FilterAside
+      filterOpen={filterOpen}
       ref={filterRef}
     >
-        <img src={close} alt="" onClick={() => dispatch(setFilterOpen(!filterOpen))} />
+        <img src={close} alt="Close" onClick={closeFilter} />
       <p>Filter and sort</p>
       <S.Option>
         <S.ButtonRow
@@ -51,10 +61,10 @@ const Filter = () => {
                 dispatch(setOffset(0))
               }}
             >
-              <option value={5}>5</option>
-              <option value={10}>20</option>
-              <option value={20}>50</option>
-              <option value={50}>100</option>
+              <option value={8}>8</option>
+              <option value={12}>12</option>
+              <option value={16}>16</option>
+              <option value={20}>20</option>
             </select>
           </S.OptionOpen>
         )}
@@ -74,7 +84,7 @@ const Filter = () => {
                 type="radio"
                 name="sort-by"
                 id="desc-price"
-                onClick={() => dispatch(setSortBy('asc'))}
+                onClick={() => dispatch(setSortBy('desc'))}
               />
               <label htmlFor="desc-price">Price: High to Low</label>
             </S.Row>
@@ -86,6 +96,15 @@ const Filter = () => {
                 onClick={() => dispatch(setSortBy('asc'))}
               />
               <label htmlFor="asc-price">Price: Low to High</label>
+            </S.Row>
+            <S.Row>
+              <input
+                type="radio"
+                name="sort-by"
+                id="latest"
+                onClick={() => dispatch(setSortBy('latest'))}
+              />
+              <label htmlFor="latest">Latest products</label>
             </S.Row>
           </S.OptionOpen>
         )}
@@ -123,8 +142,8 @@ const Filter = () => {
           </S.OptionOpen>
         )}
       </S.Option>
-    </S.FilterOpen>
+    </S.FilterAside>
   )
 }
 
-export default Filter
+export default FilterAside

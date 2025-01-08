@@ -1,26 +1,29 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import { breakpoints, colors, Input } from '../../styles'
 
-type MenuOpenProps = {
-  $isopen: boolean
-}
-
-export const Header = styled.nav`
-  position: absolute;
-  top: 0;
+export const Header = styled.nav<{ scrollY: number }>`
+  position: sticky;
+  top: ${({ scrollY }) => (scrollY > window.innerHeight ? '-100px' : '0')};
   left: 0;
   width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: transparent;
+  transition: top 0.3s ease-out;
   z-index: 1;
 
   button {
     border: none;
     background-color: transparent;
-    font-size: .7em;
+    font-size: 12px;
+    font-weight: 00;
     text-transform: uppercase;
+    white-space: nowrap;
     cursor: pointer;
+
+    &:hover {
+      font-weight: 700;
+    }
   }
 
   div.logo {
@@ -28,8 +31,10 @@ export const Header = styled.nav`
     justify-content: center;
     align-items: center;
 
-    h1 {
-      font-weight: 200;
+    h1 a {
+      font-family: "Manrope", sans-serif;
+      font-weight: 400;
+      font-size: 17px;
     }
   }
 `
@@ -43,13 +48,7 @@ export const UpperLine = styled.div`
 
   p {
     color: ${colors.white};
-    font-size: .7em;
-    font-weight: 200;
-  }
-
-  @media (max-width: ${breakpoints.desktop}) {
-    position: relative;
-    z-index: 2;
+    font-size: 12px;
   }
 `
 
@@ -58,17 +57,13 @@ export const Links = styled.ul`
   justify-content: start;
   align-items: center;
   gap: 24px;
-
-  button:hover {
-    font-weight: 700;
-  }
 `
 
 export const Navbar = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr 3fr;
   align-items: top;
-  padding: 8px 32px;
+  padding: 8px 5%;
   text-transform: uppercase;
   background-color: ${colors.white};
 
@@ -119,43 +114,21 @@ export const AuxiliaryMenu = styled.div`
       align-items: center;
       border-radius: 50%;
       padding: 0;
-      font-size: .8em;
+      font-size: 10px;
       background-color: ${colors.white};
       color: ${colors.black};
     }
   }
-`
 
-export const NavbarOpen = styled.div<MenuOpenProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  padding: 96px 32px 0;
-  background-color: ${colors.white};
-  text-transform: uppercase;
-  z-index: 1;
-
-  transition: transform .3s ease-in-out;
-  transform: ${props => props.$isopen ? 'translateX(0)' : 'translateX(-100%)'};
-
-  button {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-  }
-
-  ul {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 32px;
-    z-index: 2;
-  }
-
-  @media (min-width: ${breakpoints.desktop}) {
-    transform: translateX(-100%);
+  @media (max-width: ${breakpoints.tablet}) {
+    ${Input} {
+      position: absolute;
+      top: 100%;
+      left: 5%;
+      right: 5%;
+      background-color: ${colors.white};
+      width: 90%;
+      z-index: 2;
+    }
   }
 `

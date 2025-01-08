@@ -12,8 +12,7 @@ export const Checkout = styled.div`
   align-items: center;
   gap: 80px;
 
-  font-size: .8em;
-  font-weight: 200;
+  font-size: 12px;
   text-transform: uppercase;
 
   div.secure {
@@ -99,7 +98,7 @@ export const InputMaskStyle = styled(InputMask)`
   border-radius: 0;
   background-color: ${colors.white};
   color: ${colors.black};
-  font-size: .9em;
+  font-size: 12px;
   font-weight: 200;
 
   &:focus {

@@ -5,6 +5,7 @@ export const Empty = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   text-transform: uppercase;
   font-weight: 200;
   font-size: 12px;
@@ -18,7 +19,7 @@ export const Empty = styled.div`
     width: 100%;
     margin-top: 80px;
     padding-bottom: 16px;
-    text-align: center;
+    font-size: 13px;
     border-bottom: 2px solid ${colors.lightGrey};
   }
 `

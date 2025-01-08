@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CartAside from "./components/CartAside";
+import Alert from "./components/Alert";
 
 import Router from "./routes";
 import { configStore } from './store'
@@ -21,6 +23,8 @@ const App = () => {
         <Header />
         <Router />
         <Footer />
+        <CartAside />
+        <Alert />
       </BrowserRouter>
     </Provider>
   )

@@ -3,23 +3,25 @@ import styled from "styled-components";
 
 import { colors } from "../../styles";
 
-export const Product = styled.div`
+export const ItemCart = styled.div`
   width: 100%;
-  height: 120px;
   display: flex;
-  margin-bottom: 18px;
+  flex-direction: column;
   border: .8px solid ${colors.black};
-
   text-transform: uppercase;
-  font-size: .8em;
-  font-weight: 200;
+  font-size: 11px;
+`
+
+export const Content = styled.div`
+  display: flex;
 `
 
 export const LinkToProduct = styled(Link)`
   cursor: pointer;
 
   img {
-    height: 119px;
+    height: 100%;
+    width: 128px;
   }
 `
 
@@ -28,77 +30,19 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
   cursor: pointer;
 `
 
-export const Info = styled.div`
+export const Info = styled.div<{ mode: 'aside' | 'full' }>`
   display: flex;
+  flex-direction: ${props => props.mode === 'aside' ? 'column': ''};
   justify-content: space-between;
-  padding: 16px;
+  gap: 16px;
+  padding: ${props => props.mode === 'aside' ? '8px': '16px'};
 
   h3 {
     font-weight: 200;
-    margin: 0;
+    font-size: ${props => props.mode === 'aside' ? '10px': '11px'};
+    text-align: start;
   }
-`
-
-export const Action = styled.div`
-  height: 40px;
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
-  border: .8px solid ${colors.lightGrey};
-
-  button, select {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    background-color: transparent;
-    text-transform: uppercase;
-    font-size: 1em;
-    font-weight: 200;
-    cursor: pointer;
-
-    img {
-      height: 8px;
-    }
-  }
-
-  button {
-    border: none;
-  }
-
-  select {
-    text-align: center;
-    padding: 0 70px;
-    appearance: none;
-    border-radius: 0;
-    border: none;
-    border-right: .8px solid ${colors.lightGrey};
-    border-left: .8px solid ${colors.lightGrey};
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    &:focus {
-      outline: none;
-      border: 1px solid ${colors.lightGrey};
-    }
-
-    &:active {
-      border: 1px solid ${colors.lightGrey};
-    }
-  }
-`
-
-export const Quantity = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 16px;
-`
-
-export const Size = styled.select`
-  display: flex;
-  flex: 1;
 `

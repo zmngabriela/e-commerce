@@ -22,7 +22,7 @@ const Empty = ({ noProductsMessage, categoryTitle, categoryFilter }: Props) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { data: items } = useGetProductsQuery({ categoryId: categoryFilter})
+  const { data: products } = useGetProductsQuery({ categoryId: categoryFilter})
 
   const returnShop = () => {
     navigate('/shop')
@@ -36,12 +36,16 @@ const Empty = ({ noProductsMessage, categoryTitle, categoryFilter }: Props) => {
         Continue shopping
         <img src={arrowBlack} alt="" />
       </Btn>
-      <p className="news">{categoryTitle}</p>
-      <Products className="smaller">
-        {items?.slice(0, 3).map((item) => ( item &&
-          <ProductComponent key={item.id} item={item} />
-        ))}
-      </Products>
+      {products && products.length > 4 && (
+        <>
+          <p className="news">{categoryTitle}</p>
+          <Products>
+            {products?.slice(0, 4).map((item) => ( item &&
+              <ProductComponent key={item.id} item={item} />
+            ))}
+          </Products>
+        </>
+      )}
     </S.Empty>
   )
 }

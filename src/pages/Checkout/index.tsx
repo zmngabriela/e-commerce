@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import { RootState } from '../../store'
-import { formatToEuro, getTotalPrice } from '../../utils'
+import { formatToEuro, getTotalPrice, getUniqueItems } from '../../utils'
 import { usePostOrderMutation } from '../../services/api'
 
 import secure from '../../assets/icons/secure.png'
@@ -20,19 +20,6 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState('')
   const [postOrder, { data, isSuccess, isLoading }] = usePostOrderMutation()
   const totalPrice = getTotalPrice(itensCart)
-
-  const itemUnique = itensCart.reduce((total: CartItem[], cartItem) => {
-    const productFound = total.find((item: CartItem) => item.product.id === cartItem.product.id)
-
-    if (!productFound) {
-      total.push(cartItem)
-    } else {
-      if (productFound.selectedSize !== cartItem.selectedSize) {
-        total.push(cartItem)
-      }
-    }
-    return total;
-  }, [])
 
   const productQuantity = (product: CartItem) => {
     const productFiltered = itensCart.filter(item => item.product.id === product.product.id)
@@ -174,7 +161,6 @@ const Checkout = () => {
     const isTouched = fieldname in form.touched
     const isInvalid = fieldname in form.errors
     const hasError = isTouched && isInvalid
-
     return hasError
   }
 
@@ -187,9 +173,9 @@ const Checkout = () => {
         </div>
         <S.CheckoutInfo>
           <S.PurchaseInfo>
-            {itemUnique.map(item => (
+            {getUniqueItems(itensCart).map(item => (
               <S.ProductInfo key={item.product.id}>
-                <img src={item.product.images[0]} alt="" />
+                <img src={item.product.images[0]} alt={item.product.title} />
                 <div>
                   <S.Row>
                     <p>{item.product.title}</p>
@@ -452,7 +438,7 @@ const Checkout = () => {
                     {paymentMethod === 'applePlay' && (
                       <S.PaymentMethodOpen>
                         <Btn className='apple-pay' type="submit">
-                          <img src={applePay} alt="" />
+                          <img src={applePay} alt="Apple Pay" />
                         </Btn>
                       </S.PaymentMethodOpen>
                     )}
@@ -469,7 +455,7 @@ const Checkout = () => {
                     {paymentMethod === 'paypal' && (
                       <S.PaymentMethodOpen>
                         <Btn className='paypal' type="submit">
-                          <img src={paypal} alt="" />
+                          <img src={paypal} alt="Paypal" />
                         </Btn>
                       </S.PaymentMethodOpen>
                     )}

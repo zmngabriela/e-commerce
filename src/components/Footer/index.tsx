@@ -1,12 +1,17 @@
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import cloth from '../../assets/images/cloth.png'
+import { setAlert } from '../../store/reducers/alert'
+
+import image from '../../assets/images/footer.png'
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
 import { Container, Input } from '../../styles'
 import * as S from './styles'
 
 const Footer = () => {
+  const dispatch = useDispatch()
+
   return (
     <Container>
       <S.Footer>
@@ -64,7 +69,11 @@ const Footer = () => {
                 placeholder='Enter your email'
                 className="input-arrow"
               />
-              <button type='submit' onClick={() => alert('You have been added to Newsletter successfully.')}>
+              <button type='submit' onClick={() => dispatch(setAlert({
+                alertOpen: true,
+                title: 'Newsletter',
+                message: 'You have been added to the newsletter. Please check your email.'
+              }))}>
                 <img src={arrowBlack} alt="" />
               </button>
             </S.Input>
@@ -74,7 +83,7 @@ const Footer = () => {
           </S.Newsletter>
         </S.Links>
         <S.Image>
-          <img src={cloth} alt='' className='footer-concept' />
+          <img src={image} alt='' className='footer-concept' />
         </S.Image>
       </S.Footer>
     </Container>

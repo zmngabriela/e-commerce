@@ -1,20 +1,21 @@
+import { memo } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 
 import { RootState } from "../../store"
-import { addCart, removeCart, removeUnitCart, updateSize } from "../../store/reducers/cart"
 import { formatToEuro } from "../../utils/index"
 
-import remove from '../../assets/icons/close.png'
-import fallbackImage from '../../assets/images/fallback-img.png';
+import fallbackImage from '../../assets/images/fallback.png';
 
 import * as S from './styles'
+import ActionItemCart from "../ActionItemCart"
 
 type Props = {
   item: CartItem
+  mode: 'aside' | 'full'
 }
 
-const ItemCartComponent = ({ item }: Props) => {
-  const dispatch = useDispatch()
+const ItemCartComponent = ({ item, mode }: Props) => {
   const itensCart = useSelector((state: RootState) => state.cart.items)
   const imgSrc = item.product.images[0] || fallbackImage
 
@@ -24,60 +25,28 @@ const ItemCartComponent = ({ item }: Props) => {
     return productFiltered.length
   }
 
-  const handleChangeSize = (size: string) => {
-      dispatch(updateSize({
-        product: item.product,
-        selectedSize: size
-      }))
-  }
-
   return (
-    <S.Product>
-      <S.LinkToProduct to={`/shop/${item.product.id}`}>
-        <img
-          src={imgSrc}
-          alt={item.product.title}
-          onError={(e) => {
-            e.currentTarget.src = fallbackImage;
-          }}/>
-      </S.LinkToProduct>
-      <S.ProductInfo>
-        <S.Info>
-          <h3>{item.product.title}</h3>
-          <div>{formatToEuro(item.product.price * productQuantity(item))}</div>
-        </S.Info>
-        <S.Action>
-          <S.Quantity>
-            <button onClick={() => (
-              dispatch(addCart({
-                product: item.product,
-                selectedSize: item.selectedSize
-              }))
-            )}>
-              +
-            </button>
-            <p>{productQuantity(item)}</p>
-            <button onClick={() => dispatch(removeUnitCart(item))}>
-              -
-            </button>
-          </S.Quantity>
-          <select
-            name="size"
-            id="size"
-            onChange={(e) => (handleChangeSize(e.target.value))}
-            defaultValue={item.selectedSize}
-          >
-            <option value="s">S</option>
-            <option value="m">M</option>
-            <option value="l">L</option>
-          </select>
-          <button type="button">
-            <img src={remove} onClick={() => dispatch(removeCart(item.product))} />
-          </button>
-        </S.Action>
-      </S.ProductInfo>
-    </S.Product>
+    <S.ItemCart>
+      <S.Content>
+        <S.LinkToProduct to={`/shop/product/${item.product.id}`}>
+          <LazyLoadImage
+            src={imgSrc}
+            alt={item.product.title}
+            onError={(e) => {
+              e.currentTarget.src = fallbackImage;
+            }}/>
+        </S.LinkToProduct>
+        <S.ProductInfo>
+          <S.Info mode={mode}>
+            <h3>{item.product.title}</h3>
+            <div>{formatToEuro(item.product.price * productQuantity(item))}</div>
+          </S.Info>
+          {mode === 'full' && <ActionItemCart item={item} mode={mode} productQuantity={productQuantity} />}
+        </S.ProductInfo>
+      </S.Content>
+      {mode === 'aside' && <ActionItemCart  item={item} mode={mode} productQuantity={productQuantity} />}
+    </S.ItemCart>
   )
 }
 
-export default ItemCartComponent
+export default memo(ItemCartComponent)

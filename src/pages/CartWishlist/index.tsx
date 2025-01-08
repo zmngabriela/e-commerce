@@ -1,6 +1,5 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { shallowEqual, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 import Cart from "../../components/Cart"
 import ProductsList from "../../components/ProductsList"
@@ -9,42 +8,24 @@ import Empty from "../../components/Empty"
 import { RootState } from "../../store"
 
 import * as S from './styles'
+import { Container } from "../../styles"
 
 type Props = {
-  isCart: boolean
+  mode: 'cart' | 'wishlist'
 }
 
-const CartWishlist = ({ isCart }: Props) => {
+const CartWishlist = ({ mode }: Props) => {
   const navigate = useNavigate()
-
-  const itensCart = useSelector((state: RootState) => state.cart.items)
-  const [cartActive, setCartActive] = useState(isCart)
-
   const favorites = useSelector((state: RootState) => state.favorites.favoritesList)
-  const { term, category } = useSelector((state: RootState) => state.filter, shallowEqual)
-
-  const filterWishlist = () => {
-    if (!favorites) return []
-    return favorites?.filter(favorite => {
-      const termMatch = term
-        ? favorite.title.toLowerCase().search(term.toLowerCase()) !== -1 || favorite.category.name.toLowerCase().search(term.toLowerCase()) !== -1
-        : []
-      const categoryMatch = category && category !== 0
-        ? favorite.category.id === Number(category)
-        : []
-      return termMatch && categoryMatch
-    })
-  }
-
-  const wishlist = filterWishlist()
+  const itensCart = useSelector((state: RootState) => state.cart.items)
 
   return (
-    <S.Component>
+    <Container className="central narrow">
       <S.Tabs>
         <S.TabButton
-          $isactive={cartActive}
+          data-testid="cart-btn"
+          mode={mode === 'cart' ? 'cart' : 'wishlist'}
           onClick={() => (
-            setCartActive(true),
             navigate('/cart')
           )}
           type="button"
@@ -52,9 +33,9 @@ const CartWishlist = ({ isCart }: Props) => {
           Cart {itensCart.length > 0 ? `(${itensCart.length})` : ''}
         </S.TabButton>
         <S.TabButton
-          $isactive={!cartActive}
+          data-testid="wishlist-btn"
+          mode={mode === 'cart' ? 'wishlist' : 'cart'}
           onClick={() => (
-            setCartActive(false),
             navigate('/favorites')
           )}
           type="button"
@@ -62,7 +43,7 @@ const CartWishlist = ({ isCart }: Props) => {
           Wishlist
         </S.TabButton>
       </S.Tabs>
-      {cartActive ? (
+      {mode === 'cart' ? (
         itensCart.length > 0 ? (
           <Cart />
           ) : (
@@ -72,8 +53,8 @@ const CartWishlist = ({ isCart }: Props) => {
               categoryFilter={3}
             />
         )) : (
-          wishlist.length !== 0 ? (
-            <ProductsList filteredProducts={wishlist} />
+          favorites.length !== 0 ? (
+            <ProductsList filteredProducts={favorites} />
           ) : (
             <Empty
               noProductsMessage="There are no products in your wishlist"
@@ -82,7 +63,7 @@ const CartWishlist = ({ isCart }: Props) => {
             />
           )
       )}
-    </S.Component>
+    </Container>
   )
 }
 

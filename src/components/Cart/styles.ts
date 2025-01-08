@@ -1,5 +1,26 @@
 import styled from "styled-components";
-import { breakpoints, colors } from "../../styles";
+import { breakpoints } from "../../styles";
+
+export const Cart = styled.div`
+  text-transform: uppercase;
+
+  .shipping-note {
+    width: 100%;
+    margin-bottom: 24px;
+
+    p {
+      text-align: start;
+      max-width: 50%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    .shipping-note p {
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+`
 
 export const Purchase = styled.div`
   width: 100%;
@@ -8,12 +29,11 @@ export const Purchase = styled.div`
   gap: 16px;
 
   @media (max-width: ${breakpoints.desktop}) {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 `
 
-export const Cart = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -26,54 +46,5 @@ export const Cart = styled.div`
     img {
       width: 32px;
     }
-  }
-`
-
-export const Price = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  border: .8px solid ${colors.black};
-
-  div {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  span {
-    font-weight: 700;
-  }
-
-  .price-calc {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid ${colors.black};
-  }
-
-  .line-through {
-    text-decoration: line-through;
-    margin-right: 8px;
-  }
-`
-
-export const Checkout = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  button.voucher {
-    display: flex;
-    background-color: transparent;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 200;
-  }
-
-  input {
-    font-size: 1.1em;
   }
 `
