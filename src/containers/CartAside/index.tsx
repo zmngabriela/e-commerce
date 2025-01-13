@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import ItemCartComponent from '../ItemCart'
-import CartSummary from '../CartSummary'
+import ItemCartComponent from '../../components/ItemCart'
+import CartSummary from '../../components/CartSummary'
 
 import { setCartOpen } from '../../store/reducers/cart'
 import { RootState } from '../../store'

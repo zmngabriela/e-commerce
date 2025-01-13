@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import CartAside from "./components/CartAside";
+import CartAside from "./containers/CartAside";
 import Alert from "./components/Alert";
 
 import Router from "./routes";

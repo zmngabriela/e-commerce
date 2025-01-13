@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import ProductCard from "../ProductCard"
+import ProductCard from "../../components/ProductCard";
 
 import * as S from './styles'
 

@@ -8,7 +8,7 @@ import { setTerm } from "../../store/reducers/filter"
 
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
-import { Products } from "../ProductsList/styles"
+import { Products } from "../../containers/ProductsList/styles"
 import { Btn } from "../../styles"
 import * as S from './styles'
 

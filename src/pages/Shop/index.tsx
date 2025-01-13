@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { BarLoader } from "react-spinners"
 
-import ProductsList from "../../components/ProductsList"
+import ProductsList from "../../containers/ProductsList"
 import Empty from "../../components/Empty"
 import FilterAside from "../../components/FilterAside"
 

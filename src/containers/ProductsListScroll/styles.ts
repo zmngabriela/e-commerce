@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Product } from '../ProductCard/styles'
+import { Product } from '../../components/ProductCard/styles'
 import { breakpoints, colors } from '../../styles'
 
 export const Products = styled.ul`

@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-top: 80px;
 
@@ -56,7 +56,7 @@ export const Container = styled.div`
     }
 
     @media (max-width: ${breakpoints.desktop}) {
-      width: 90%;
+      width: 95%;
     }
 
     @media (max-width: ${breakpoints.tablet}) {

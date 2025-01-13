@@ -30,8 +30,18 @@ export const Carousel = styled.div`
   }
 
   ul {
+    position: absolute;
+    bottom: 16px;
+    right: 50%;
     display: flex;
     align-items: center;
+    gap: 8px;
+
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   @media (max-width: ${breakpoints.desktop}) {
@@ -54,9 +64,6 @@ export const Carousel = styled.div`
 `
 
 export const SlideButton = styled.button`
-  position: absolute;
-  bottom: 16px;
-  right: 50%;
   width: 18px;
   height: 4px;
   border: none;
@@ -64,7 +71,7 @@ export const SlideButton = styled.button`
   cursor: pointer;
 
   &.active {
-    background-color: ${colors.black};
+    background-color: ${colors.grey};
   }
 `
 

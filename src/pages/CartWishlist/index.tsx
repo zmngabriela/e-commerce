@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-import Cart from "../../components/Cart"
-import ProductsList from "../../components/ProductsList"
+import Cart from "../../containers/Cart"
+import ProductsList from "../../containers/ProductsList"
 import Empty from "../../components/Empty"
 
 import { RootState } from "../../store"

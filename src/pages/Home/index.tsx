@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 
-import ProductsListScroll from "../../components/ProductsListScroll";
+import ProductsListScroll from "../../containers/ProductsListScroll";
 
 import { setCategory, setCurrentPage, setOffset, setTerm } from "../../store/reducers/filter";
 import { RootState } from "../../store";
@@ -61,19 +61,19 @@ const Home = () => {
       {errorCategory && (
         <p>
           Error details:
-          {'status' in errorCategory && <span> {errorCategory.status} - </span>}
-          {'message' in errorCategory && <span> {errorCategory.message}</span>}
+          {'status' in errorCategory && <span>{errorCategory.status}</span>}
+          {'message' in errorCategory && <span>{errorCategory.message}</span>}
         </p>
       )}
     </Container>
   )
   if (isErrorProducts) return (
     <Container className="central narrow">
-      <p>Something went wrong while loading the categories.</p>
+      <p>Something went wrong while loading the products.</p>
       {errorProducts && (
         <p>
           Error details:
-          {'status' in errorProducts && <span> {errorProducts.status} </span>}
+          {'status' in errorProducts && <span>{errorProducts.status}</span>}
           {'message' in errorProducts && <span>{errorProducts.message}</span>}
         </p>
       )}
