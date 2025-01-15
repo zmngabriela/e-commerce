@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react"
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
+import 'intersection-observer';
 
 import Home from ".."
 

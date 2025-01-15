@@ -15,7 +15,7 @@ const CartWishlist = lazy(() => import("./pages/CartWishlist"))
 const Router = () => (
   <Suspense fallback={
     <Container className="central narrow">
-      <BarLoader color={colors.black} cssOverride={{marginTop: '80px'}} />
+      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} />
     </Container>
   }>
     <Routes>

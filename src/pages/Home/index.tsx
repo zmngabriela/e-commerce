@@ -3,18 +3,17 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 
-import ProductsListScroll from "../../containers/ProductsListScroll";
+import ListScroll from "../../containers/ListScroll";
+import Hero from "../../components/Hero";
 
-import { setCategory, setCurrentPage, setOffset, setTerm } from "../../store/reducers/filter";
-import { RootState } from "../../store";
 import { useGetCategoriesQuery, useGetProductsQuery } from "../../services/api";
+import { setTerm } from "../../store/reducers/filter";
 
 import carousel2 from '../../assets/images/carousel2.jpg'
 import carousel3 from '../../assets/images/carousel3.jpg'
 import carousel1 from '../../assets/images/carousel1.jpg'
 import hero from '../../assets/images/concept.jpg'
 
-import fallbackImage from '../../assets/images/fallback.png';
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
 import { Btn, colors, Container } from "../../styles";
@@ -40,14 +39,6 @@ const Home = () => {
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-  }
-
-  const categoryFilter = (category: RootState['filter']['category']) => {
-    navigate('/shop')
-    dispatch(setCategory(category))
-    dispatch(setTerm(''))
-    dispatch(setOffset(0))
-    dispatch(setCurrentPage(1))
   }
 
   const returnShop = () => {
@@ -111,13 +102,14 @@ const Home = () => {
                   <img src={arrowBlack} alt="" />
                 </Btn>
               </S.Title>
-              {products && <ProductsListScroll filteredProducts={products} />}
+              <ListScroll products={products} />
             </S.Arrivals>
           )
         )}
+        <Hero />
         {categories && categories.length >= 5 && (
           isLoadingCategory ? (
-            <BarLoader color={colors.black} cssOverride={{marginTop: '80px'}}/>
+            <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}}/>
           ) : (
             <S.ProductCategories>
               <S.Title>
@@ -127,22 +119,7 @@ const Home = () => {
                   <img src={arrowBlack} alt="" />
                 </Btn>
               </S.Title>
-              <S.Categories>
-                  {categories?.slice(0, 4).map(category => (
-                    <S.Category key={category.id}>
-                      <button type="button" onClick={() => categoryFilter(category.id)}>
-                        <img
-                          src={category.image}
-                          alt={category.name}
-                          onError={(e) => {
-                            e.currentTarget.src = fallbackImage;
-                          }}
-                        />
-                        {category.name}
-                      </button>
-                    </S.Category>
-                  ))}
-              </S.Categories>
+              <ListScroll categories={categories} />
             </S.ProductCategories>
           )
         )}

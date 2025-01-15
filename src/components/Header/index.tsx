@@ -105,7 +105,7 @@ const Header = () => {
             </button>
           </li>
         </S.Links>
-        <div className="logo">
+        <div className="brand">
           <h1><Link to='/'>Brand</Link></h1>
         </div>
         <S.AuxiliaryMenu>

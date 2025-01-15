@@ -26,7 +26,7 @@ export const Header = styled.nav<{ scrollY: number }>`
     }
   }
 
-  div.logo {
+  div.brand {
     display: flex;
     justify-content: center;
     align-items: center;

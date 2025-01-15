@@ -21,7 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
     text-decoration: none;
-    color: ${colors.black};
     list-style: none;
   }
 
@@ -31,12 +30,15 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 200;
     font-size: 12px;
   }
+
+  a {
+    color: inherit;
+  }
 `
 
 export const Container = styled.div`
     width: 90%;
-    margin: 0 auto;
-    margin-top: 80px;
+    margin: 80px auto 0;
 
     &.central {
       display: flex;

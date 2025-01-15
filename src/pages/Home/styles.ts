@@ -1,13 +1,20 @@
 import styled from "styled-components";
-import { breakpoints, Btn, colors } from "../../styles";
+import { breakpoints, Btn, colors, Container } from "../../styles";
 
 export const Home = styled.div`
   margin-top: 80px;
+
+  ${Container} {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
 `
 
 export const Hero = styled.div`
   display: flex;
   gap: 2px;
+  margin-bottom: 160px;
 
   img.hero {
     width: 20vw;
@@ -65,20 +72,19 @@ export const Carousel = styled.div`
 
 export const SlideButton = styled.button`
   width: 18px;
-  height: 4px;
+  height: 2px;
   border: none;
   background-color: ${colors.lightGrey};
   cursor: pointer;
 
   &.active {
-    background-color: ${colors.grey};
+    background-color: ${colors.black};
   }
 `
 
 export const Arrivals = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 160px 0 80px;
 `
 
 export const Title = styled.div`
@@ -108,49 +114,4 @@ export const Title = styled.div`
 export const ProductCategories = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-`
-
-export const Categories = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2px;
-
-  @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: 1fr 1fr;
-
-    li {
-      margin-bottom: 40px;
-
-      &:nth-of-type(4),
-      &:nth-of-type(5) {
-        display: none;
-      }
-    }
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    grid-template-columns: 1fr;
-  }
-`
-
-export const Category = styled.li`
-  button {
-    display: flex;
-    flex-direction: column;
-    font-weight: 200;
-    cursor: pointer;
-
-    background: none;
-    border: none;
-
-    img {
-      width: 100%;
-      margin-bottom: 8px;
-    }
-
-    &:hover {
-      font-weight: 400;
-    }
-  }
 `

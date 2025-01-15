@@ -1,8 +1,11 @@
 import styled from 'styled-components'
+
 import { Product } from '../../components/ProductCard/styles'
+import { Category } from '../../components/CategoryCard/styles'
+
 import { breakpoints, colors } from '../../styles'
 
-export const Products = styled.ul`
+export const Items = styled.ul`
   display: flex;
   gap: 2px;
   padding-bottom: 40px;
@@ -18,13 +21,14 @@ export const Products = styled.ul`
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
+    border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: ${colors.black};
     border-radius: 0;
     width: 4px;
-    height: 4px;
+    height: 2px;
   }
 
   ::-webkit-scrollbar-track {
@@ -34,25 +38,26 @@ export const Products = styled.ul`
     height: 4px;
   }
 
-  ${Product} {
-    img.product-image {
-      height: 320px;
-      width: 320px;
-      object-fit: cover;
+  ${Product},
+  ${Category} {
+    p {
+      font-size: 12px;
+      font-weight: 200;
+    }
+
+    img.product-image,
+    img.category-image {
+      height: 400px;
+      width: 400px;
 
       @media (max-width: ${breakpoints.desktop}) {
-        height: 240px;
-        width: 240px;
+        height: 320px;
+        width: 320px;
       }
 
       @media (max-width: ${breakpoints.tablet}) {
-        height: 300px;
-        width: 300px;
-      }
-
-      @media (max-width: ${breakpoints.mobile}) {
-        height: 320px;
-        width: 320px;
+        height: 280px;
+        width: 280px;
       }
     }
   }

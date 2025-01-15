@@ -6,6 +6,7 @@ export const Products = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px 2px;
   margin: 40px 0;
+  text-align: start;
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;

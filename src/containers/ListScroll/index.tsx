@@ -1,14 +1,16 @@
 import { useRef, useState } from "react";
 
 import ProductCard from "../../components/ProductCard";
+import CategoryCard from "../../components/CategoryCard";
 
 import * as S from './styles'
 
 type Props = {
-  filteredProducts: Product[]
+  products?: Product[]
+  categories?: Category[]
 }
 
-const ProductsListScroll = ({ filteredProducts }: Props) => {
+const ListScroll = ({ products, categories }: Props) => {
     const scrollContainer = useRef<HTMLUListElement>(null);
     const [isDown, setIsDown] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -49,19 +51,22 @@ const ProductsListScroll = ({ filteredProducts }: Props) => {
     };
 
   return (
-    <S.Products
+    <S.Items
       ref={scrollContainer}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
     >
-      {filteredProducts?.map((product) => (
+      {products && products?.map((product) => (
         <ProductCard key={product.id} item={product} />
       ))}
-    </S.Products>
+      {categories && categories?.map((category) => (
+        <CategoryCard key={category.id} item={category} />
+      ))}
+    </S.Items>
   )
 }
 
 
-export default ProductsListScroll
+export default ListScroll

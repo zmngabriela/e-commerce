@@ -33,8 +33,8 @@ const CartAside = () => {
     }
   }, [])
 
-  if (location.pathname === '/cart') {
-    return null
+  if (location.pathname === '/cart'|| location.pathname === '/checkout') {
+    dispatch(setCartOpen(false))
   }
 
   return (

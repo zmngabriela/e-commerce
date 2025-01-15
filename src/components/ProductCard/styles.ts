@@ -5,8 +5,10 @@ export const Product = styled.li`
   p {
     font-size: 12px;
     font-weight: 200;
+  }
 
-    &.title:hover {
+  &:hover {
+    p.title {
       font-weight: 400;
     }
   }
