@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { setAlert } from '../../store/reducers/alert'
 
-import image from '../../assets/images/footer.png'
+import image from '../../assets/images/footer-image.jpeg'
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
 import { Container, Input } from '../../styles'

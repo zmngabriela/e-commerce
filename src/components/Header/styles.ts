@@ -25,22 +25,10 @@ export const Header = styled.nav<{ scrollY: number }>`
       font-weight: 700;
     }
   }
-
-  div.brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    h1 a {
-      font-family: "Manrope", sans-serif;
-      font-weight: 400;
-      font-size: 17px;
-    }
-  }
 `
 
 export const UpperLine = styled.div`
-  height: 20px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +36,7 @@ export const UpperLine = styled.div`
 
   p {
     color: ${colors.white};
-    font-size: 12px;
+    font-size: 11px;
   }
 `
 
@@ -64,8 +52,19 @@ export const Navbar = styled.div`
   grid-template-columns: 3fr 1fr 3fr;
   align-items: top;
   padding: 8px 5%;
-  text-transform: uppercase;
   background-color: ${colors.white};
+
+  div.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-weight: 400;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+  }
 
   .toggle {
     position: relative;
@@ -87,6 +86,16 @@ export const Navbar = styled.div`
     .toggle {
       display: block;
     }
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+      grid-template-columns: 1fr 1fr 8fr;
+
+      div.brand h1 {
+        font-weight: 400;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
   }
 `
 

@@ -13,6 +13,7 @@ import search from '../../assets/icons/search.png'
 import favorite from '../../assets/icons/favorite.png'
 import menu from '../../assets/icons/menu.png'
 import close from '../../assets/icons/close.png'
+import userImage from '../../assets/icons/user.png'
 
 import { Input } from "../../styles"
 import * as S from "./styles"
@@ -68,7 +69,7 @@ const Header = () => {
   return (
     <S.Header scrollY={scrollY}>
       <S.UpperLine>
-        <p>free shipping from 100€ and free return in all orders</p>
+        <p>free shipping from 100€ | free return in all orders</p>
       </S.UpperLine>
       <S.Navbar>
         <button
@@ -127,17 +128,18 @@ const Header = () => {
           >
             <img src={search} alt="Search" />
           </button>
+          <Link to={'/login'} type="button">
+            <img src={userImage} alt="Login" />
+          </Link>
           <Link to={'/favorites'} type="button">
             <img src={favorite} alt="Favorites" />
           </Link>
-          <button type="button" className="btn-cart">
-            <Link to='/cart'>
-              <img src={cart} alt="Cart" />
-              {itemsCart.length > 0 && (
-                <span>{itemsCart.length}</span>
-              )}
-            </Link>
-          </button>
+          <Link to='/cart' className="btn-cart">
+            <img src={cart} alt="Cart" />
+            {itemsCart.length > 0 && (
+              <span>{itemsCart.length}</span>
+            )}
+          </Link>
         </S.AuxiliaryMenu>
       </S.Navbar>
       <NavbarAside categoryFilter={categoryFilter} setMenuOpen={setMenuOpen} menuOpen={menuOpen} />

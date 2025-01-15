@@ -108,13 +108,19 @@ export const Image = styled.div`
   img {
     width: 250px;
     object-fit: contain;
+  }
 
-    @media (max-width: ${breakpoints.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: start;
+
+    img {
       width: 200px;
     }
+  }
 
-    @media (max-width: ${breakpoints.mobile}) {
-      width: 125px;
+  @media (max-width: ${breakpoints.mobile}) {
+    img {
+      width: 160px;
     }
   }
 `

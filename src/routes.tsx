@@ -10,7 +10,7 @@ const About = lazy(() => import("./pages/About"))
 const Product = lazy(() => import("./pages/Product"))
 const Checkout = lazy(() => import("./pages/Checkout"))
 const CartWishlist = lazy(() => import("./pages/CartWishlist"))
-
+const Login = lazy(() => import("./pages/Login"))
 
 const Router = () => (
   <Suspense fallback={
@@ -26,6 +26,7 @@ const Router = () => (
       <Route path="/about" element={<About />} />
       <Route path="/favorites" element={<CartWishlist mode="wishlist" />} />
       <Route path="/checkout" element={<Checkout />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   </Suspense>
 )

@@ -9,7 +9,6 @@ export const NavbarOpen = styled.div<{ menuOpen: boolean }>`
   height: 100vh;
   padding: 96px 32px 0;
   background-color: ${colors.white};
-  z-index: 1;
 
   transition: transform .3s ease-in-out;
   transform: ${props => props.menuOpen ? 'translateX(0)' : 'translateX(-100%)'};
@@ -26,7 +25,12 @@ export const NavbarOpen = styled.div<{ menuOpen: boolean }>`
     align-items: flex-start;
     flex-direction: column;
     margin-top: 32px;
-    z-index: 2;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
   }
 
   @media (min-width: ${breakpoints.desktop}) {

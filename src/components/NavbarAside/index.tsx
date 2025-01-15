@@ -27,7 +27,7 @@ const NavbarAside = ({ categoryFilter, setMenuOpen, menuOpen }: Props) => {
 
   return (
     <S.NavbarOpen menuOpen={menuOpen}>
-      <div className="logo">
+      <div className="brand">
         <h1><Link to='/'>Brand</Link></h1>
       </div>
       <Links>
