@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { breakpoints, Btn, colors, Container } from "../../styles";
 
 export const Home = styled.div`
-  margin-top: 80px;
 
   ${Container} {
     display: flex;
@@ -12,35 +11,15 @@ export const Home = styled.div`
 `
 
 export const Hero = styled.div`
-  display: flex;
-  gap: 2px;
-  margin-bottom: 160px;
-
-  img.hero {
-    width: 20vw;
-    height: 20vw;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    img.hero {
-      display: none;
-    }
-  }
-`
-
-export const Carousel = styled.div`
   position: relative;
-  width: 79.98vw;
-
-  img {
-    width: 100%;
-  }
+  margin-bottom: 160px;
 
   ul {
     position: absolute;
     bottom: 16px;
-    right: 50%;
+    left: 16px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 8px;
 
@@ -49,6 +28,14 @@ export const Carousel = styled.div`
       margin: 0;
       padding: 0;
     }
+  }
+`
+
+export const Carousel = styled.div`
+  width: 100%;
+
+  img {
+    width: 100%;
   }
 
   @media (max-width: ${breakpoints.desktop}) {
@@ -59,10 +46,6 @@ export const Carousel = styled.div`
     }
   }
 
-  @media (max-width: ${breakpoints.tablet}) {
-    width: 100vw;
-  }
-
   @media (max-width: ${breakpoints.mobile}) {
     img {
       object-position: -50px;
@@ -71,8 +54,8 @@ export const Carousel = styled.div`
 `
 
 export const SlideButton = styled.button`
-  width: 18px;
-  height: 2px;
+  width: 2px;
+  height: 18px;
   border: none;
   background-color: ${colors.lightGrey};
   cursor: pointer;

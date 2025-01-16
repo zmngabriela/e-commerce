@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { breakpoints, Input } from "../../styles";
 
-export const Login = styled.div`
-  width: 50%;
+export const Login = styled.form`
+  max-width: 540px;
   display: flex;
   flex-direction: column;
   margin: 16px 0;
@@ -22,11 +22,7 @@ export const Login = styled.div`
     margin-top: 8px;
   }
 
-  @media (max-width: ${breakpoints.desktop}) {
-    width: 60%;
-  }
-
   @media (max-width: ${breakpoints.mobile}) {
-    width: 90%;
+    width: 100%;
   }
 `

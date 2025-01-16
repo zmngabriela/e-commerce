@@ -87,7 +87,6 @@ const Home = () => {
             ))}
           </ul>
         </S.Carousel>
-        <img src={hero} alt="Concept" className="hero" />
       </S.Hero>
       <Container>
         {products && products?.length >= 5 && (
