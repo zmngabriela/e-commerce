@@ -67,7 +67,7 @@ const Header = () => {
   }, [navigate, dispatch])
 
   return (
-    <S.Header scrollY={scrollY}>
+    <S.Header $scrollY={scrollY}>
       <S.UpperLine>
         <p>free shipping from 100€ | free return in all orders</p>
       </S.UpperLine>

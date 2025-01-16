@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 
 import ItemCartComponent from '../../components/ItemCart'
 import CartSummary from '../../components/CartSummary'
@@ -11,7 +12,6 @@ import { getUniqueItems } from '../../utils'
 import close from '../../assets/icons/close.png'
 
 import * as S from './styles'
-import { useLocation } from 'react-router-dom'
 
 const CartAside = () => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const CartAside = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
+      if (cartOpen && cartRef.current && !cartRef.current.contains(e.target as Node)) {
         dispatch(setCartOpen(false))
       }
     }
@@ -33,13 +33,13 @@ const CartAside = () => {
     }
   }, [])
 
-  if (location.pathname === '/cart'|| location.pathname === '/checkout') {
+  if (cartOpen && location.pathname === '/cart'|| location.pathname === '/checkout') {
     dispatch(setCartOpen(false))
   }
 
   return (
     <S.CartAside
-      cartOpen={cartOpen}
+      $cartOpen={cartOpen}
       ref={cartRef}
     >
       <img src={close} alt="Close" className='close' onClick={() => dispatch(setCartOpen(false))} />

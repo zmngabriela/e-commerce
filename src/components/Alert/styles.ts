@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { colors } from "../../styles"
 
-export const Alert = styled.div<{ alertOpen: boolean }>`
+export const Alert = styled.div<{ $alertOpen: boolean }>`
   position: fixed;
   bottom: 16px;
   left: 16px;
   width: 300px;
   height: 80px;
 
-  display: ${props => props.alertOpen ? 'flex' : 'none'};
+  display: ${props => props.$alertOpen ? 'flex' : 'none'};
   padding: 16px 16px;
   background-color: ${colors.white};
 `

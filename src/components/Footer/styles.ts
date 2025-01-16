@@ -4,7 +4,7 @@ import { breakpoints, colors } from "../../styles"
 export const Footer = styled.footer`
   display: grid;
   grid-template-columns: 2fr 1fr;
-  margin: 160px auto 80px;
+  margin: 260px 0 80px;
 
   @media (max-width: ${breakpoints.tablet}) {
     gap: 40px;
@@ -53,7 +53,7 @@ export const Links = styled.div`
   }
 `
 
-export const Newsletter = styled.div`
+export const Newsletter = styled.form`
   grid-column: 1;
 
   h3 {

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { breakpoints, colors } from "../../styles"
 
-export const NavbarOpen = styled.div<{ menuOpen: boolean }>`
+export const NavbarOpen = styled.div<{ $menuOpen: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@ export const NavbarOpen = styled.div<{ menuOpen: boolean }>`
   background-color: ${colors.white};
 
   transition: transform .3s ease-in-out;
-  transform: ${props => props.menuOpen ? 'translateX(0)' : 'translateX(-100%)'};
+  transform: ${props => props.$menuOpen ? 'translateX(0)' : 'translateX(-100%)'};
 
   button {
     display: flex;

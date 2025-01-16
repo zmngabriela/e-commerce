@@ -22,11 +22,11 @@ const Alert = () => {
       }))
     }, 4000)
 
-    return () => clearInterval(timeout);
+    return () => clearTimeout(timeout);
   }, [alertOpen])
 
   return (
-    <S.Alert alertOpen={alertOpen}>
+    <S.Alert $alertOpen={alertOpen}>
       <S.Image>
         <img src={close} alt="Close" onClick={() => dispatch(setAlert({
           alertOpen: false,

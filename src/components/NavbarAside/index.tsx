@@ -26,7 +26,7 @@ const NavbarAside = ({ categoryFilter, setMenuOpen, menuOpen }: Props) => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <S.NavbarOpen menuOpen={menuOpen}>
+    <S.NavbarOpen $menuOpen={menuOpen}>
       <div className="brand">
         <h1><Link to='/'>Brand</Link></h1>
       </div>

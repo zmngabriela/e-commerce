@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { breakpoints, colors } from "../../styles"
 
-export const CartAside = styled.div<{ cartOpen: boolean }>`
+export const CartAside = styled.div<{ $cartOpen: boolean }>`
   position: fixed;
   top: 0;
   right: 0;
@@ -19,7 +19,7 @@ export const CartAside = styled.div<{ cartOpen: boolean }>`
   background-color: ${colors.white};
 
   transition: transform .3s ease-in-out;
-  transform: ${props => props.cartOpen ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${props => props.$cartOpen ? 'translateX(0)' : 'translateX(100%)'};
 
   img.close {
     width: 12px;

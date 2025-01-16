@@ -38,6 +38,19 @@ const api = createApi({
     getCategories: builder.query<Category[], void>({
       query: () => 'categories'
     }),
+    getUsers: builder.query<User[], void>({
+      query: () => 'users'
+    }),
+    getUser: builder.query<User, void>({
+      query: (id) => `user?${id}`
+    }),
+    addUser: builder.mutation<any, NewUser>({
+      query: (addUser) => ({
+        url: 'addUser',
+        method: 'POST',
+        body: addUser
+      })
+    }),
     postOrder: builder.mutation<any, Order>({
       query: (order) => ({
         url: 'orders',
@@ -48,6 +61,6 @@ const api = createApi({
   })
 })
 
-export const { useGetProductsQuery, useGetProductQuery, useGetCategoriesQuery, usePostOrderMutation } = api
+export const { useGetProductsQuery, useGetProductQuery, useGetCategoriesQuery, useGetUsersQuery, useGetUserQuery, useAddUserMutation, usePostOrderMutation } = api
 
 export default api

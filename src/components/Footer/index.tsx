@@ -1,16 +1,46 @@
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { setAlert } from '../../store/reducers/alert'
+import { RootState } from '../../store'
 
 import image from '../../assets/images/footer-image.jpeg'
 import arrowBlack from '../../assets/icons/arrow-black.png'
+import { addNewsletter } from '../../store/reducers/newsletter'
 
 import { Container, Input } from '../../styles'
 import * as S from './styles'
 
 const Footer = () => {
   const dispatch = useDispatch()
+  const [newsletterTemp, setNewsletterTemp] = useState('')
+  const { newsletter } = useSelector((state: RootState) => state.newsletter)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    dispatch(addNewsletter(newsletterTemp))
+    setNewsletterTemp('')
+
+    const newsletterFound = newsletter.some(item => item === newsletterTemp)
+    if (!newsletterFound && newsletterTemp !== '') {
+      dispatch(
+        setAlert({
+          alertOpen: true,
+          title: 'Newsletter',
+          message: 'You have been added to the newsletter. Please check your email.'
+        })
+      )
+    } else if (newsletterTemp !== '') {
+      dispatch(
+        setAlert({
+          alertOpen: true,
+          title: 'Newsletter',
+          message: 'Email already registered in our Newsletter.'
+        })
+      )
+    }
+  }
 
   return (
     <Container>
@@ -60,7 +90,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-          <S.Newsletter>
+          <S.Newsletter onSubmit={(e) => handleSubmit(e)}>
             <h3>Subscribe to Newsletter</h3>
             <p>Stay updated of our last offers and news.</p>
             <S.Input>
@@ -68,12 +98,10 @@ const Footer = () => {
                 type="email"
                 placeholder='Enter your email'
                 className="input-arrow"
+                onChange={(e) => setNewsletterTemp(e.target.value)}
+                value={newsletterTemp}
               />
-              <button type='submit' onClick={() => dispatch(setAlert({
-                alertOpen: true,
-                title: 'Newsletter',
-                message: 'You have been added to the newsletter. Please check your email.'
-              }))}>
+              <button type='submit'>
                 <img src={arrowBlack} alt="" />
               </button>
             </S.Input>

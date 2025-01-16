@@ -20,7 +20,7 @@ const FilterAside = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
+      if (filterOpen && filterRef.current && !filterRef.current.contains(e.target as Node)) {
         closeFilter()
       }
     }

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { breakpoints, colors, Input } from '../../styles'
 
-export const Header = styled.nav<{ scrollY: number }>`
+export const Header = styled.nav<{ $scrollY: number }>`
   position: sticky;
-  top: ${({ scrollY }) => (scrollY > window.innerHeight ? '-100px' : '0')};
+  top: ${({ $scrollY }) => ($scrollY > window.innerHeight ? '-100px' : '0')};
   left: 0;
   width: 100vw;
   display: flex;

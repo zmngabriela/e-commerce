@@ -1,9 +1,10 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit"
 
-import cartReducer from "./reducers/cart";
-import filterReducer from "./reducers/filter";
-import favoriteReducer from "./reducers/favorites";
-import alertReducer from "./reducers/alert";
+import cartReducer from "./reducers/cart"
+import filterReducer from "./reducers/filter"
+import favoriteReducer from "./reducers/favorites"
+import alertReducer from "./reducers/alert"
+import newsletterReducer from "./reducers/newsletter"
 
 import api from "../services/api";
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   filter: filterReducer,
   favorites: favoriteReducer,
   alert: alertReducer,
+  newsletter: newsletterReducer,
   [api.reducerPath]: api.reducer
 }
 )
