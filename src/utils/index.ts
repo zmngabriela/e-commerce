@@ -1,4 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"
+
+export const defaultAvatar = 'https://i.pinimg.com/736x/09/3c/a0/093ca0c8d4dadffeb70e23625c8183e3.jpg'
 
 export const formatToEuro = (value: number): string => {
   return new Intl.NumberFormat('se-SE', { style: 'currency', currency: 'EUR' }).format(value);
@@ -26,4 +28,10 @@ export const getUniqueItems = (items: CartItem[]) => {
 
 export const useQuery = () => {
   return new URLSearchParams(useLocation().search)
+}
+
+export const getQuantity = (itemsCart: CartItem[], product: CartItem) => {
+  const productFiltered = itemsCart.filter(item => item.product.id === product.product.id)
+  .filter(item => item.selectedSize === product.selectedSize)
+  return productFiltered.length
 }

@@ -1,16 +1,12 @@
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux"
+import { BrowserRouter } from "react-router-dom"
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import CartAside from "./containers/CartAside";
-import Alert from "./components/Alert";
+import ScrollToTop from "./features/ScrollToTop"
 
-import Router from "./routes";
+import Router from "./routes"
 import { configStore } from './store'
 
-import { GlobalStyle } from "./styles";
+import { GlobalStyle } from "./styles"
 
 const App = () => {
   const store = configStore()
@@ -20,14 +16,10 @@ const App = () => {
       <BrowserRouter>
         <ScrollToTop />
         <GlobalStyle />
-        <Header />
         <Router />
-        <Footer />
-        <CartAside />
-        <Alert />
       </BrowserRouter>
     </Provider>
   )
 }
 
-export default App;
+export default App
