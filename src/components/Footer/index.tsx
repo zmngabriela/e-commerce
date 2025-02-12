@@ -5,24 +5,24 @@ import { Link } from 'react-router-dom'
 import { setAlert } from '../../store/reducers/alert'
 import { RootState } from '../../store'
 
-import image from '../../assets/images/footer-image.jpeg'
+import image from '../../assets/images/concept.jpg'
 import arrowBlack from '../../assets/icons/arrow-black.png'
-import { addNewsletter } from '../../store/reducers/newsletter'
+import { addNewsletter } from '../../store/reducers/newsletterMock'
 
 import { Container, Input } from '../../styles'
 import * as S from './styles'
 
 const Footer = () => {
   const dispatch = useDispatch()
-  const [newsletterTemp, setNewsletterTemp] = useState('')
-  const { newsletter } = useSelector((state: RootState) => state.newsletter)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { newsletterList } = useSelector((state: RootState) => state.newsletter)
+  const [newsletterTemp, setNewsletterTemp] = useState('')
+
+  const subscribeNewsletter = (e: React.FormEvent) => {
     e.preventDefault()
     dispatch(addNewsletter(newsletterTemp))
     setNewsletterTemp('')
-
-    const newsletterFound = newsletter.some(item => item === newsletterTemp)
+    const newsletterFound = newsletterList.some(item => item === newsletterTemp)
     if (!newsletterFound && newsletterTemp !== '') {
       dispatch(
         setAlert({
@@ -53,17 +53,17 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Experience
               </Link>
             </li>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Jobs
               </Link>
             </li>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Stores
               </Link>
             </li>
@@ -75,22 +75,22 @@ const Footer = () => {
           </ul>
           <ul>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Privacity policy
               </Link>
             </li>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Terms and Conditions
               </Link>
             </li>
             <li>
-              <Link to={'/'}>
+              <Link to={'/about'}>
                 Contact us
               </Link>
             </li>
           </ul>
-          <S.Newsletter onSubmit={(e) => handleSubmit(e)}>
+          <S.Newsletter onSubmit={(e) => subscribeNewsletter(e)}>
             <h3>Subscribe to Newsletter</h3>
             <p>Stay updated of our last offers and news.</p>
             <S.Input>
@@ -106,7 +106,7 @@ const Footer = () => {
               </button>
             </S.Input>
             <p className='subtitle'>
-              I confirm I have read and accept the <a href="#">Terms and conditions</a> and the <a href="#">Privacity Policy</a>.
+              I confirm I have read and accept the <Link to="/about">Terms and conditions</Link> and the <Link to="/about">Privacity Policy</Link>.
             </p>
           </S.Newsletter>
         </S.Links>
