@@ -9,14 +9,15 @@ import Hero from "../../components/Hero";
 import { useGetCategoriesQuery, useGetProductsQuery } from "../../services/api";
 import { setTerm } from "../../store/reducers/filter";
 
-import carousel2 from '../../assets/images/carousel2.jpg'
-import carousel3 from '../../assets/images/carousel3.jpg'
-import carousel1 from '../../assets/images/carousel1.jpg'
-import hero from '../../assets/images/concept.jpg'
+import banner from '../../assets/images/banner.png'
+import banner2 from '../../assets/images/banner2.png'
+import furniture from '../../assets/images/furniture.webp'
+import smallScreenBanner from '../../assets/images/shoe.jpg'
+import smallScreenBanner2 from '../../assets/images/lamps.jpg'
 
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
-import { Btn, colors, Container } from "../../styles";
+import { BtnArrow, colors, Container } from "../../styles";
 import * as S from './styles'
 
 const Home = () => {
@@ -26,8 +27,21 @@ const Home = () => {
   const { data: categories, isLoading: isLoadingCategory, isError: isErrorCategory, error: errorCategory } = useGetCategoriesQuery()
   const { data: products, isLoading: isLoadingProducts, isError: isErrorProducts, error: errorProducts } = useGetProductsQuery({categoryId: 3})
 
-  const images = [carousel3, carousel2, carousel1];
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [smallScreen, setSmallScreen] = useState(window.innerWidth < 768)
+
+  const updateMedia = () => {
+    setSmallScreen(window.innerWidth < 768)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', updateMedia)
+    return () => window.removeEventListener('resize', updateMedia)
+  }, [])
+
+  const images = smallScreen
+    ? [smallScreenBanner, furniture, smallScreenBanner2]
+    : [banner, furniture, banner2]
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,23 +103,6 @@ const Home = () => {
         </S.Carousel>
       </S.Hero>
       <Container>
-        {products && products?.length >= 5 && (
-          isLoadingProducts ? (
-            <BarLoader data-testid="spinner-loader" color={colors.black} cssOverride={{marginTop: '80px'}}/>
-          ) : (
-            <S.Arrivals>
-              <S.Title>
-                <h2>New arrivals</h2>
-                <Btn className="arrow" type="button" onClick={returnShop} >
-                  Show all
-                  <img src={arrowBlack} alt="" />
-                </Btn>
-              </S.Title>
-              <ListScroll products={products} />
-            </S.Arrivals>
-          )
-        )}
-        <Hero />
         {categories && categories.length >= 5 && (
           isLoadingCategory ? (
             <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}}/>
@@ -113,13 +110,30 @@ const Home = () => {
             <S.ProductCategories>
               <S.Title>
                 <h2>Shop by Category</h2>
-                <Btn className="arrow" type="button" onClick={returnShop}>
+                <BtnArrow className="arrow" type="button" onClick={returnShop}>
                   Show all
                   <img src={arrowBlack} alt="" />
-                </Btn>
+                </BtnArrow>
               </S.Title>
               <ListScroll categories={categories} />
             </S.ProductCategories>
+          )
+        )}
+        <Hero />
+        {products && products?.length >= 5 && (
+          isLoadingProducts ? (
+            <BarLoader data-testid="spinner-loader" color={colors.black} cssOverride={{marginTop: '80px'}}/>
+          ) : (
+            <S.Arrivals>
+              <S.Title>
+                <h2>New arrivals</h2>
+                <BtnArrow className="arrow" type="button" onClick={returnShop} >
+                  Show all
+                  <img src={arrowBlack} alt="" />
+                </BtnArrow>
+              </S.Title>
+              <ListScroll products={products} />
+            </S.Arrivals>
           )
         )}
       </Container>

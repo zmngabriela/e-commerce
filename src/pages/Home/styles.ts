@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { breakpoints, Btn, colors, Container } from "../../styles";
 
 export const Home = styled.div`
-
   ${Container} {
     display: flex;
     flex-direction: column;
@@ -16,7 +15,7 @@ export const Hero = styled.div`
 
   ul {
     position: absolute;
-    bottom: 16px;
+    bottom: 160px;
     left: 16px;
     display: flex;
     flex-direction: column;
@@ -40,15 +39,9 @@ export const Carousel = styled.div`
 
   @media (max-width: ${breakpoints.desktop}) {
     img {
-      height: 70vh;
+      height: 95vh;
       object-fit: cover;
-      object-position: -40px;
-    }
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    img {
-      object-position: -50px;
+      object-position: top;
     }
   }
 `
