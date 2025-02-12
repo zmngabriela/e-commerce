@@ -5,7 +5,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { setCategory, setCurrentPage, setOffset, setTerm } from "../../store/reducers/filter";
 import { RootState } from "../../store";
 
-import fallbackImage from '../../assets/images/fallback.png';
+import imgMock from '../../assets/images/chair.jpg'
 
 import * as S from './styles'
 
@@ -13,11 +13,9 @@ export type Props = {
   item: Category
 }
 
-function CategoryCard ({ item }: Props) {
+const CardCategory = ({ item }: Props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const imgSrc = item.image || fallbackImage
 
   const categoryFilter = (category: RootState['filter']['category']) => {
     navigate('/shop')
@@ -31,11 +29,8 @@ function CategoryCard ({ item }: Props) {
     <S.Category key={item.id}>
       <button type="button" onClick={() => categoryFilter(item.id)}>
         <LazyLoadImage
-          src={imgSrc}
+          src={imgMock}
           alt={item.name}
-          onError={(e) => {
-            e.currentTarget.src = fallbackImage;
-          }}
           className='category-image'
         />
         {item.name}
@@ -44,4 +39,4 @@ function CategoryCard ({ item }: Props) {
   )
 }
 
-export default CategoryCard
+export default CardCategory

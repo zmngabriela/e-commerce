@@ -9,11 +9,11 @@ import * as S from './styles'
 
 type Props = {
   item: CartItem,
-  mode: 'aside' | 'full',
-  productQuantity: (item: CartItem) => number
+  mode: 'aside' | 'full'
+  quantity: number
 }
 
-const Action = ({ item, mode, productQuantity }: Props) => {
+const CartItemAction = ({ item, mode, quantity }: Props) => {
   const dispatch = useDispatch()
 
   const handleChangeSize = useCallback((size: string) => {
@@ -34,7 +34,7 @@ const Action = ({ item, mode, productQuantity }: Props) => {
             )}>
               +
             </button>
-            <p>{productQuantity(item)}</p>
+            <p>{quantity}</p>
             <button onClick={() => dispatch(removeUnitCart(item))}>
               -
             </button>
@@ -56,4 +56,4 @@ const Action = ({ item, mode, productQuantity }: Props) => {
   )
 }
 
-export default memo(Action)
+export default memo(CartItemAction)

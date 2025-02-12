@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
-import ItemCartComponent from '../../components/ItemCart'
+import CardItemCart from '../../components/CardItemCart'
 import CartSummary from '../../components/CartSummary'
 
 import { setCartOpen } from '../../store/reducers/cart'
@@ -13,11 +13,11 @@ import close from '../../assets/icons/close.png'
 
 import * as S from './styles'
 
-const CartAside = () => {
+const AsideCart = () => {
   const dispatch = useDispatch()
   const location = useLocation()
 
-  const itensCart = useSelector((state: RootState) => state.cart.items)
+  const itemsCart = useSelector((state: RootState) => state.cart.items)
   const { cartOpen } = useSelector((state: RootState) => state.cart)
   const cartRef = useRef<HTMLDivElement | null>(null)
 
@@ -49,8 +49,8 @@ const CartAside = () => {
       </div>
       <S.Purchase>
         <S.Container>
-          {getUniqueItems(itensCart).map(item => (
-            <ItemCartComponent item={item} mode="aside" key={item.product.id} />
+          {getUniqueItems(itemsCart).map(item => (
+            <CardItemCart item={item} mode="aside" key={item.product.id} />
           ))}
         </S.Container>
         <CartSummary />
@@ -59,4 +59,4 @@ const CartAside = () => {
   )
 }
 
-export default CartAside
+export default AsideCart

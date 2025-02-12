@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { Product } from '../../components/ProductCard/styles'
-import { Category } from '../../components/CategoryCard/styles'
+import { Product } from '../../components/CardProduct/styles'
+import { Category } from '../../components/CardCategory/styles'
 
 import { breakpoints, colors } from '../../styles'
 

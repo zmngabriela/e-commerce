@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
-import ProductCard from "../../components/ProductCard";
-import CategoryCard from "../../components/CategoryCard";
+import ProductCard from "../../components/CardProduct";
+import CategoryCard from "../../components/CardCategory";
 
 import * as S from './styles'
 

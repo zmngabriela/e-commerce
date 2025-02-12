@@ -10,7 +10,7 @@ type Props = {
   menuOpen: boolean
 }
 
-const NavbarAside = ({ categoryFilter, setMenuOpen, menuOpen }: Props) => {
+const AsideNavbar = ({ categoryFilter, setMenuOpen, menuOpen }: Props) => {
   const navigate = useNavigate()
 
   const filterAndClose = (category: number) => {
@@ -71,4 +71,4 @@ const NavbarAside = ({ categoryFilter, setMenuOpen, menuOpen }: Props) => {
   )
 }
 
-export default memo(NavbarAside)
+export default memo(AsideNavbar)

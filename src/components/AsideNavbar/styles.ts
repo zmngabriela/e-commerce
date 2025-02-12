@@ -27,12 +27,6 @@ export const NavbarOpen = styled.div<{ $menuOpen: boolean }>`
     margin-top: 32px;
   }
 
-  h1 {
-    font-weight: 400;
-    font-size: 20px;
-    text-transform: uppercase;
-  }
-
   @media (min-width: ${breakpoints.desktop}) {
     transform: translateX(-100%);
   }

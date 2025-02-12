@@ -12,7 +12,7 @@ import { formatToEuro } from "../../utils/index"
 import cart from '../../assets/icons/cart.png';
 import notFavorited from '../../assets/icons/favorite.png'
 import favorited from '../../assets/icons/favorited.png'
-import fallbackImage from '../../assets/images/fallback.png';
+import imgMock from '../../assets/images/chair.jpg'
 
 import * as S from './styles'
 
@@ -20,14 +20,13 @@ export type Props = {
   item: Product
 }
 
-function ProductCard ({ item }: Props) {
+function CardProduct ({ item }: Props) {
   const dispatch = useDispatch();
 
   const [selectedSize, setSelectedSize] = useState('')
   const favorites = useSelector((state: RootState) => state.favorites.favoritesList)
 
   const isFav = favorites.some((fav) => fav.id === item.id)
-  const imgSrc = item.images[0] || fallbackImage
 
   const addToCart = (item: CartItem) => {
     if (selectedSize) {
@@ -49,12 +48,9 @@ function ProductCard ({ item }: Props) {
     <S.Product>
       <S.ProductInfo>
         <LazyLoadImage
-          src={imgSrc}
+          src={imgMock}
           alt={item.title}
           className='product-image'
-          onError={(e) => {
-            e.currentTarget.src = fallbackImage;
-          }}
         />
         <S.Action>
           <img
@@ -92,4 +88,4 @@ function ProductCard ({ item }: Props) {
   )
 }
 
-export default ProductCard
+export default CardProduct

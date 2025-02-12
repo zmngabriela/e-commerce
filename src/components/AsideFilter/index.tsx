@@ -9,7 +9,7 @@ import close from '../../assets/icons/close.png'
 import { Input } from '../../styles'
 import * as S from './styles'
 
-const FilterAside = () => {
+const AsideFilter = () => {
   const dispatch = useDispatch()
   const { limit, filterOpen } = useSelector((state: RootState) => state.filter)
   const filterRef = useRef<HTMLDivElement | null>(null)
@@ -146,4 +146,4 @@ const FilterAside = () => {
   )
 }
 
-export default FilterAside
+export default AsideFilter
