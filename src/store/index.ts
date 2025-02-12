@@ -4,7 +4,9 @@ import cartReducer from "./reducers/cart"
 import filterReducer from "./reducers/filter"
 import favoriteReducer from "./reducers/favorites"
 import alertReducer from "./reducers/alert"
-import newsletterReducer from "./reducers/newsletter"
+import newsletterReducer from "./reducers/newsletterMock"
+import authReducer from "./reducers/auth"
+import orderReducer from "./reducers/ordersMock"
 
 import api from "../services/api";
 
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   favorites: favoriteReducer,
   alert: alertReducer,
   newsletter: newsletterReducer,
+  auth: authReducer,
+  orders: orderReducer,
   [api.reducerPath]: api.reducer
 }
 )
@@ -29,3 +33,4 @@ export function configStore(preloadedState?: Partial<RootState>) {
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof configStore>
+export type AppDispatch = ReturnType<typeof configStore>['dispatch']
