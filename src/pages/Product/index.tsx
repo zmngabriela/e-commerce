@@ -11,7 +11,7 @@ import { addCart, setCartOpen } from "../../store/reducers/cart"
 import { setAlert } from "../../store/reducers/alert"
 import { formatToEuro } from "../../utils"
 
-import fallbackImage from '../../assets/images/fallback.png';
+import imgMock from '../../assets/images/chair.jpg'
 import sizeChart from '../../assets/images/size-chart.jpg'
 import close from '../../assets/icons/close.png'
 
@@ -77,26 +77,17 @@ const ProductPage = () => {
                   <S.ProductImages>
                     <div>
                       <img
-                        src={product?.images[0] || fallbackImage}
+                        src={imgMock}
                         alt={product.title}
-                        onError={(e) => {
-                          e.currentTarget.src = fallbackImage;
-                        }}
                       />
                       <img
-                        src={product?.images[1] || fallbackImage}
+                        src={imgMock}
                         alt={product.title}
-                        onError={(e) => {
-                          e.currentTarget.src = fallbackImage;
-                        }}
                       />
                     </div>
                     <img
-                      src={product?.images[2] || fallbackImage}
+                      src={imgMock}
                       alt={product.title}
-                      onError={(e) => {
-                        e.currentTarget.src = fallbackImage;
-                      }}
                     />
                   </S.ProductImages>
                   <S.ProductDescription>
