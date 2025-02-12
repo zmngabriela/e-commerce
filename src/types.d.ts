@@ -1,4 +1,4 @@
-declare type Product = {
+interface Product {
   id: number
   title: string
   price: number
@@ -14,27 +14,65 @@ declare type Product = {
   updatedAt: string
 }
 
-declare type Category = {
+interface ProductFilters {
+  categoryId?: number
+  price_min?: number
+  price_max?: number
+  title?: string
+  limit?: number
+  offset?: number
+}
+
+interface Category {
   id: number
   name: string
   image: string
 }
 
-declare type CartItem = {
+interface CartItem {
   product: Product
   selectedSize: string
 }
 
-declare type Item = {
+interface Item {
   productId: number
   price: number,
-  size: string
+  size: string,
+  quantity: number
 }
 
-declare type Order = {
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+interface NewUser {
+  name: string
+  email: string
+  password: string
+  avatar: string
+}
+
+interface Login {
+  email: string
+  password: string
+}
+
+interface Auth {
+  access_token: string
+  refresh_token: string
+}
+
+interface MyProfile {
+  id: number
+  name: string
+  avatar: string
+}
+
+interface Order {
   user: {
     name: string,
-    lastName: string,
     email: string,
     phone: string,
     document: string,
@@ -58,4 +96,12 @@ declare type Order = {
       year: number
     }
   }
+}
+
+interface OrderAnswer extends Order {
+  id: number,
+  status: "paid" | "pending" | "failed" | "cancelled" | "delivered" | "returned",
+  createdAt: () => string,
+  totalAmount: number,
+  trackingCode: string
 }
