@@ -14,7 +14,7 @@ export const NavbarOpen = styled.div<{ $menuOpen: boolean }>`
   transform: ${props => props.$menuOpen ? 'translateX(0)' : 'translateX(-100%)'};
 
   button {
-    color: ${colors.lightGrey};
+    color: ${colors.black};
     display: flex;
     flex-direction: column;
     align-items: start;

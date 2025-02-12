@@ -48,7 +48,7 @@ export const Row = styled.div`
 `
 
 export const ButtonRow = styled.button`
-  color: ${colors.lightGrey};
+  color: ${colors.black};
   width: 100%;
   display: flex;
   justify-content: space-between;
