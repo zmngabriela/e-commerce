@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import ProductComponent from "../ProductCard"
+import CardProduct from "../CardProduct"
 
 import { useGetProductsQuery } from "../../services/api"
 import { setTerm } from "../../store/reducers/filter"
@@ -9,7 +9,7 @@ import { setTerm } from "../../store/reducers/filter"
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
 import { Products } from "../../containers/ProductsList/styles"
-import { Btn } from "../../styles"
+import { BtnArrow } from "../../styles"
 import * as S from './styles'
 
 type Props = {
@@ -32,16 +32,16 @@ const Empty = ({ noProductsMessage, categoryTitle, categoryFilter }: Props) => {
   return (
     <S.Empty>
       <h3>{noProductsMessage}</h3>
-      <Btn type="button" onClick={returnShop} className="arrow">
+      <BtnArrow type="button" onClick={returnShop} className="arrow">
         Continue shopping
         <img src={arrowBlack} alt="" />
-      </Btn>
+      </BtnArrow>
       {products && products.length > 4 && (
         <>
-          <p className="news">{categoryTitle}</p>
+          <p className="recommended">{categoryTitle}</p>
           <Products>
             {products?.slice(0, 4).map((item) => ( item &&
-              <ProductComponent key={item.id} item={item} />
+              <CardProduct key={item.id} item={item} />
             ))}
           </Products>
         </>

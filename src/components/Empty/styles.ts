@@ -12,15 +12,14 @@ export const Empty = styled.div`
   h3 {
     margin-bottom: 16px;
     font-weight: 200;
-    text-transform: uppercase;
   }
 
-  p.news {
+  p.recommended {
     width: 100%;
     margin-top: 80px;
     padding-bottom: 16px;
 
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
     text-transform: uppercase;
     border-bottom: 2px solid ${colors.lightGrey};

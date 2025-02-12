@@ -19,11 +19,11 @@ const CartSummary = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const itensCart = useSelector((state: RootState) => state.cart.items)
+  const itemsCart = useSelector((state: RootState) => state.cart.items)
   const [hasVoucher, setHasVoucher] = useState(false)
 
   const shippingCost = 10
-  const totalPrice = getTotalPrice(itensCart)
+  const totalPrice = getTotalPrice(itemsCart)
   const freeShipping = totalPrice > 100
 
   const returnShop = () => {
