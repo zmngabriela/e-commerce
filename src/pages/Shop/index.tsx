@@ -3,7 +3,7 @@ import { BarLoader } from "react-spinners"
 
 import ProductsList from "../../containers/ProductsList"
 import Empty from "../../components/Empty"
-import FilterAside from "../../components/FilterAside"
+import AsideFilter from "../../components/AsideFilter"
 
 import { RootState } from "../../store"
 import { useGetProductsQuery } from "../../services/api"
@@ -32,7 +32,6 @@ const Shop = () => {
 
   const sortedItems = products?.slice().sort((a, b) => {
     const isValidDate = (date: string) => !isNaN(Date.parse(date))
-
     if (sortBy === 'asc') {
       return a.price - b.price
     } if (sortBy === 'desc') {
@@ -120,7 +119,7 @@ const Shop = () => {
             />
           </Container>
         )}
-      <FilterAside />
+      <AsideFilter />
     </S.Shop>
   )
 }

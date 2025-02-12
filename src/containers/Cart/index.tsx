@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 
-import ItemCartComponent from "../../components/ItemCart"
+import CardItemCart from "../../components/CardItemCart"
 import CartSummary from "../../components/CartSummary"
 
 import { RootState } from "../../store"
@@ -9,7 +9,7 @@ import { getUniqueItems } from "../../utils"
 import * as S from './styles'
 
 const Cart = () => {
-  const itensCart = useSelector((state: RootState) => state.cart.items)
+  const itemsCart = useSelector((state: RootState) => state.cart.items)
 
   return (
     <S.Cart>
@@ -18,8 +18,8 @@ const Cart = () => {
       </div>
       <S.Purchase>
         <S.Container>
-          {getUniqueItems(itensCart).map(item => (
-            <ItemCartComponent item={item} mode="full" key={item.product.id} />
+          {getUniqueItems(itemsCart).map(item => (
+            <CardItemCart item={item} mode="full" key={item.product.id} />
           ))}
         </S.Container>
         <CartSummary />
