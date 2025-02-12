@@ -78,6 +78,7 @@ export const Container = styled.div`
 export const Btn = styled.button`
   padding: 8px 16px;
   border: 1px solid ${colors.black};
+  color: ${colors.black};
   background-color: transparent;
 
   text-transform: uppercase;
@@ -120,6 +121,7 @@ export const Input = styled.input`
   color: ${colors.black};
   font-size: 12px;
   font-weight: 200;
+  border-radius: none;
 
   &:focus {
     outline: none;

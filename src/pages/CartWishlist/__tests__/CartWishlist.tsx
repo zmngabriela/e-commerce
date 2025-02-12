@@ -14,12 +14,12 @@ jest.mock('react-router-dom', () => ({
 describe('Tests for CartWishlist component', () => {
   test('Cart must correctly render', () => {
     renderWithProvider(<CartWishlist mode="cart" />)
-    expect(screen.getByText('There are no products in your cart')).toBeInTheDocument()
+    expect(screen.getByText('There are no products in your cart.')).toBeInTheDocument()
   })
 
   test('Wishlist must correctly render', () => {
     renderWithProvider(<CartWishlist mode="wishlist" />)
-    expect(screen.getByText('There are no products in your wishlist')).toBeInTheDocument()
+    expect(screen.getByText('There are no products in your wishlist.')).toBeInTheDocument()
   })
 
   test('useNavigate is updated when TabButton Wishlist is clicked', () => {

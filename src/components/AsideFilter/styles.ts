@@ -48,10 +48,12 @@ export const Row = styled.div`
 `
 
 export const ButtonRow = styled.button`
+  color: ${colors.lightGrey};
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  cursor: pointer;
 `
 
 export const OptionOpen = styled.div`

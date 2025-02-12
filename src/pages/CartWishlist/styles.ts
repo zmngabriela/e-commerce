@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles";
 
 export const Tabs = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ export const Tabs = styled.div`
 `
 
 export const TabButton = styled.button<{ mode: 'cart' | 'wishlist'}>`
+  color: ${colors.black};
   background-color: transparent;
   border: none;
   text-transform: uppercase;
