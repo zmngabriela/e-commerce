@@ -16,8 +16,32 @@ type Props = {
 
 const CartWishlist = ({ mode }: Props) => {
   const navigate = useNavigate()
-  const favorites = useSelector((state: RootState) => state.favorites.favoritesList)
-  const itensCart = useSelector((state: RootState) => state.cart.items)
+  const favoritesList = useSelector((state: RootState) => state.favorites.favoritesList)
+  const itemsCart = useSelector((state: RootState) => state.cart.items)
+
+  const cart = (
+    itemsCart.length > 0 ? (
+      <Cart />
+      ) : (
+        <Empty
+          noProductsMessage="There are no products in your cart."
+          categoryTitle="Newest products"
+          categoryFilter={3}
+        />
+    )
+  )
+
+  const favorites = (
+    favoritesList.length !== 0 ? (
+      <ProductsList filteredProducts={favoritesList} />
+    ) : (
+      <Empty
+        noProductsMessage="There are no products in your wishlist."
+        categoryTitle="Most wanted items"
+        categoryFilter={2}
+      />
+    )
+)
 
   return (
     <Container className="central narrow">
@@ -30,7 +54,7 @@ const CartWishlist = ({ mode }: Props) => {
           )}
           type="button"
         >
-          Cart {itensCart.length > 0 ? `(${itensCart.length})` : ''}
+          Cart {itemsCart.length > 0 ? `(${itemsCart.length})` : ''}
         </S.TabButton>
         <S.TabButton
           data-testid="wishlist-btn"
@@ -43,26 +67,7 @@ const CartWishlist = ({ mode }: Props) => {
           Wishlist
         </S.TabButton>
       </S.Tabs>
-      {mode === 'cart' ? (
-        itensCart.length > 0 ? (
-          <Cart />
-          ) : (
-            <Empty
-              noProductsMessage="There are no products in your cart"
-              categoryTitle="Newest products"
-              categoryFilter={3}
-            />
-        )) : (
-          favorites.length !== 0 ? (
-            <ProductsList filteredProducts={favorites} />
-          ) : (
-            <Empty
-              noProductsMessage="There are no products in your wishlist"
-              categoryTitle="Check out our most wanted items"
-              categoryFilter={2}
-            />
-          )
-      )}
+      {mode === 'cart' ? cart : favorites}
     </Container>
   )
 }
