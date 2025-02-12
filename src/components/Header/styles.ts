@@ -58,12 +58,6 @@ export const Navbar = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    h1 {
-      font-weight: 400;
-      font-size: 20px;
-      text-transform: uppercase;
-    }
   }
 
   .toggle {
@@ -89,13 +83,7 @@ export const Navbar = styled.div`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-      grid-template-columns: 1fr 1fr 8fr;
-
-      div.brand h1 {
-        font-weight: 400;
-        font-size: 18px;
-        text-transform: uppercase;
-      }
+    grid-template-columns: 1fr 1fr 8fr;
   }
 `
 

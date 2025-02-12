@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
-import NavbarAside from "../NavbarAside"
+import AsideNavbar from "../AsideNavbar"
 
 import { RootState } from "../../store"
 import { setCategory, setCurrentPage, setOffset, setTerm } from "../../store/reducers/filter"
@@ -23,6 +23,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   const { items: itemsCart } = useSelector((state: RootState) => state.cart)
+  const auth = useSelector((state: RootState) => state.auth.credentials.access_token)
   const searchInput = useRef<HTMLInputElement | null>(null)
 
   const [searchActive, setSearchActive] = useState(false)
@@ -128,7 +129,7 @@ const Header = () => {
           >
             <img src={search} alt="Search" />
           </button>
-          <Link to={'/login'} type="button">
+          <Link to={auth ? '/profile' : '/auth'} type="button">
             <img src={userImage} alt="Login" />
           </Link>
           <Link to={'/favorites'} type="button">
@@ -142,7 +143,7 @@ const Header = () => {
           </Link>
         </S.AuxiliaryMenu>
       </S.Navbar>
-      <NavbarAside categoryFilter={categoryFilter} setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
+      <AsideNavbar categoryFilter={categoryFilter} setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
     </S.Header>
   )
 }

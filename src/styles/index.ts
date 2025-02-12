@@ -34,6 +34,12 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
   }
+
+  h1 {
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
 `
 
 export const Container = styled.div`
@@ -70,17 +76,14 @@ export const Container = styled.div`
 `
 
 export const Btn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
   padding: 8px 16px;
-
   border: 1px solid ${colors.black};
   background-color: transparent;
+
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
+
   white-space: nowrap;
   cursor: pointer;
 
@@ -88,19 +91,24 @@ export const Btn = styled.button`
     background-color: ${colors.black};
     color: ${colors.lightGrey};
   }
+`
 
-  &.arrow {
+export const BtnArrow = styled(Btn)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    width: 12px;
+    transform: rotate(-40deg);
+  }
+
+  &:hover {
     img {
-      width: 12px;
-      transform: rotate(-40deg);
-    }
-
-    &:hover {
-      img {
-        content: url(${arrowWhite});
-        transform: rotate(0deg);
-        transition: transform 0.4s ease-in-out;
-      }
+      content: url(${arrowWhite});
+      transform: rotate(0deg);
+      transition: transform 0.4s ease-in-out;
     }
   }
 `
@@ -121,6 +129,10 @@ export const Input = styled.input`
     width: 100%;
     background-color: transparent;
     border: none;
+  }
+
+  &.error {
+    border: 1px solid red;
   }
 `
 
