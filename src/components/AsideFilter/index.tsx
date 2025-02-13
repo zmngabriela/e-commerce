@@ -42,7 +42,7 @@ const AsideFilter = () => {
       filterOpen={filterOpen}
       ref={filterRef}
     >
-        <img src={close} alt="Close" onClick={closeFilter} />
+      <img src={close} alt="Close" onClick={closeFilter} className='icon' />
       <p>Filter and sort</p>
       <S.Option>
         <S.ButtonRow

@@ -4,7 +4,7 @@ import { colors } from "../../styles";
 export const Tabs = styled.div`
   display: flex;
   gap: 32px;
-  margin-bottom: 80px;
+  margin: 80px 0;
 `
 
 export const TabButton = styled.button<{ mode: 'cart' | 'wishlist'}>`

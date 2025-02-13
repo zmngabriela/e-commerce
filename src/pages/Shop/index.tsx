@@ -74,7 +74,7 @@ const Shop = () => {
             <S.Filter>
               <div onClick={() => dispatch(setFilterOpen(!filterOpen))}>
                 <button className="btn-filter">Filter and sort</button>
-                <img src={filter} alt="" />
+                <img src={filter} alt="" className="icon"/>
               </div>
             </S.Filter>
             <ProductsList filteredProducts={sortedItems} />

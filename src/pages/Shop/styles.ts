@@ -3,11 +3,11 @@ import { Btn, colors } from "../../styles";
 
 export const Shop = styled.div`
   overflow: hidden;
+
   button.btn-filter,
-  button
-  label,
   input {
     background-color: transparent;
+    color: ${colors.black};
     border: none;
     text-transform: uppercase;
     font-size: 12px;
@@ -15,8 +15,10 @@ export const Shop = styled.div`
     cursor: pointer;
   }
 
-  img {
+  img.icon {
     width: 12px;
+    height: 12px;
+    cursor: pointer;
   }
 `
 

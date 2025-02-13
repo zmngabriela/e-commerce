@@ -123,6 +123,8 @@ export const Input = styled.input`
   font-weight: 200;
   border-radius: none;
 
+  -webkit-appearance: none;
+
   &:focus {
     outline: none;
   }
