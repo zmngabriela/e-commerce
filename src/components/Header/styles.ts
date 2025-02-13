@@ -63,7 +63,8 @@ export const Navbar = styled.div`
   .toggle {
     position: relative;
     display: none;
-    text-align: start;
+    justify-content: start;
+    align-items: center;
     z-index: 2;
 
     img {
@@ -78,7 +79,7 @@ export const Navbar = styled.div`
     }
 
     .toggle {
-      display: block;
+      display: flex;
     }
   }
 
