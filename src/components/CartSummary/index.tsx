@@ -1,9 +1,9 @@
-import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, Link } from "react-router-dom"
 
 import { formatToEuro, getTotalPrice } from "../../utils/index"
 import { setTerm } from "../../store/reducers/filter"
+import { setCartOpen } from "../../store/reducers/cart"
 import { RootState } from "../../store"
 
 import visa from '../../assets/icons/visa.png'
@@ -11,16 +11,14 @@ import mastercard from '../../assets/icons/mastercard.png'
 import applePay from '../../assets/icons/apple-pay.png'
 import paypal from '../../assets/icons/paypal.png'
 
-import { Btn, Input } from "../../styles"
+import { Btn } from "../../styles"
 import * as S from './styles'
-import { setCartOpen } from "../../store/reducers/cart"
 
 const CartSummary = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const itemsCart = useSelector((state: RootState) => state.cart.items)
-  const [hasVoucher, setHasVoucher] = useState(false)
 
   const shippingCost = 10
   const totalPrice = getTotalPrice(itemsCart)
@@ -57,19 +55,6 @@ const CartSummary = () => {
         </div>
       </S.Price>
       <S.Checkout>
-        <button
-          type="button"
-          className="voucher"
-          onClick={() => setHasVoucher(!hasVoucher)}
-        >
-          {hasVoucher ? '-' : '+'} Do you have a discount voucher?
-        </button>
-        {hasVoucher ? (
-          <Input
-            type="text"
-            placeholder="Enter the voucher code"
-          />
-        ) : ''}
         <Btn as={Link} to={'/checkout'} className="checkout">
           Checkout
         </Btn>

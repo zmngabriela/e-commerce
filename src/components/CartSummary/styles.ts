@@ -54,16 +54,6 @@ export const Checkout = styled.div`
   flex-direction: column;
   gap: 16px;
 
-  button.voucher {
-    display: flex;
-    background-color: transparent;
-    color: ${colors.black};
-    border: none;
-    text-transform: uppercase;
-    font-size: 12px;
-  }
-
-  button,
   ${Btn} {
     font-weight: 200;
 
@@ -71,9 +61,5 @@ export const Checkout = styled.div`
       background-color: ${colors.black};
       color: ${colors.white};
     }
-  }
-
-  input {
-    font-size: 13px;
   }
 `

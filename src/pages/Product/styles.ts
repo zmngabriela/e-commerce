@@ -119,6 +119,7 @@ export const Sizes = styled.div`
   button {
     border: none;
     background-color: transparent;
+    color: ${colors.black};
     text-transform: uppercase;
     font-weight: 200;
     font-size: 11px;

@@ -46,7 +46,6 @@ export const Size = styled.select`
   border-right: .8px solid ${colors.lightGrey};
   border-left: .8px solid ${colors.lightGrey};
 
-  appearance: none;
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
