@@ -22,6 +22,7 @@ export const Action = styled.div<{ mode: 'aside' | 'full' }>`
     background: none;
     font-weight: 200;
     font-size: 12px;
+    color: ${colors.black};
     cursor: pointer;
 
     img {

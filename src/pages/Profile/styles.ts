@@ -15,6 +15,7 @@ export const Nav = styled.ul`
     font-weight: 200;
     font-size: 12px;
     cursor: pointer;
+    color: ${colors.black};
   }
 `
 
@@ -42,6 +43,7 @@ export const Logout = styled.div`
   button.logout-btn {
     border: none;
     background-color: transparent;
+    color: ${colors.black};
     font-weight: 200;
     font-size: 12px;
     cursor: pointer;
@@ -67,6 +69,7 @@ export const Aside = styled.aside<{ mode?: string }>`
   button {
     border: none;
     background-color: transparent;
+    color: ${colors.black};
     font-weight: 200;
     font-size: 12px;
     text-align: start;
@@ -100,6 +103,7 @@ export const Form = styled.form`
 export const BtnArrow = styled.button`
   border: none;
   background-color: transparent;
+  color: ${colors.black};
   font-weight: 200;
   font-size: 12px;
   cursor: pointer;

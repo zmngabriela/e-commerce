@@ -57,6 +57,7 @@ export const Checkout = styled.div`
   button.voucher {
     display: flex;
     background-color: transparent;
+    color: ${colors.black};
     border: none;
     text-transform: uppercase;
     font-size: 12px;

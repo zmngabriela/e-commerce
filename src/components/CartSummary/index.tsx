@@ -62,7 +62,7 @@ const CartSummary = () => {
           className="voucher"
           onClick={() => setHasVoucher(!hasVoucher)}
         >
-          + Do you have a discount voucher?
+          {hasVoucher ? '-' : '+'} Do you have a discount voucher?
         </button>
         {hasVoucher ? (
           <Input

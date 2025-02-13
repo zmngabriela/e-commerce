@@ -84,6 +84,7 @@ export const Btn = styled.button`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
+  text-align: center;
 
   white-space: nowrap;
   cursor: pointer;
