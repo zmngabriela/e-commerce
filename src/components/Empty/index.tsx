@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import CardProduct from "../CardProduct"
 
 import { useGetProductsQuery } from "../../services/api"
-import { setTerm } from "../../store/reducers/filter"
+import { setCategory, setTerm } from "../../store/reducers/filter"
 
 import arrowBlack from '../../assets/icons/arrow-black.png'
 
@@ -25,8 +25,9 @@ const Empty = ({ noProductsMessage, categoryTitle, categoryFilter }: Props) => {
   const { data: products } = useGetProductsQuery({ categoryId: categoryFilter})
 
   const returnShop = () => {
-    navigate('/shop')
     dispatch(setTerm(''))
+    dispatch(setCategory(0))
+    navigate('/shop')
   }
 
   return (
