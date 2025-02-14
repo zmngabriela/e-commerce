@@ -25,7 +25,8 @@ export const FilterAside = styled.div<{ filterOpen: boolean }>`
 
   select {
     background-color: transparent;
-    padding: 2px;
+    color: ${colors.black};
+    padding: 2px 16px;
     cursor: pointer;
 
     &:focus {
