@@ -64,7 +64,7 @@ export const ProductInfo = styled.div`
   border-bottom: .8px solid ${colors.black};
 
   img {
-    max-height: 179px;
+    max-height: 178px;
   }
 
   > div {

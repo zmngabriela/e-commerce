@@ -56,7 +56,7 @@ const ContainerOrders = ({ user }: ProfileProps) => {
             <p>Total price: {formatToEuro(order.totalAmount)}</p>
             <p>Status: {order.status.charAt(0).toUpperCase() + order.status.slice(1)}</p>
             <p>Payment method: {order.payment.method.charAt(0).toUpperCase() + order.payment.method.slice(1)}</p>
-            <p>Address: {order.shipping.streetNumber + ',' + order.shipping.postalCode + ',' + order.shipping.city}</p>
+            <p>Address: {order.shipping.streetNumber + ', ' + order.shipping.postalCode + ', ' + order.shipping.city}</p>
           </S.Order>
         )) : (
           <>

@@ -40,6 +40,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     text-transform: uppercase;
   }
+
+  input, select, button {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
 `
 
 export const Container = styled.div`
@@ -123,8 +129,6 @@ export const Input = styled.input`
   font-size: 12px;
   font-weight: 200;
   border-radius: none;
-
-  -webkit-appearance: none;
 
   &:focus {
     outline: none;
