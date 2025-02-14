@@ -40,6 +40,13 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     text-transform: uppercase;
   }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+  }
 `
 
 export const Container = styled.div`

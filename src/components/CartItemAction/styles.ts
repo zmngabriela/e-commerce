@@ -15,15 +15,14 @@ export const Action = styled.div<{ mode: 'aside' | 'full' }>`
   }
 
   button, select {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background: none;
     font-weight: 200;
     font-size: 12px;
     color: ${colors.black};
     cursor: pointer;
+
+    text-align: center;
+    text-align-last: center;
 
     img {
       height: 8px;
