@@ -26,7 +26,7 @@ const Hero = () => {
         <div>
           <h3>Powered by Platzi Fake Store API</h3>
           <p>
-            White it can be messy for being open to post, it is a great way to simulate a e-commerce website.
+            Which is used for fetching product and user data, implementing JWT authentication, and handling pagination.
           </p>
           <div>
             <Btn>
