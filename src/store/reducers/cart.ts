@@ -23,7 +23,7 @@ const cartSlice = createSlice({
       const { product, selectedSize } = action.payload
       state.items.push({ product, selectedSize })
     },
-    removeCart: (state, action: PayloadAction<Product>) => {
+    removeProductCart: (state, action: PayloadAction<Product>) => {
       const product = action.payload
       state.items = state.items.filter((item) => item.product.id !== product.id)
       if (state.items.length === 0) {
@@ -50,9 +50,12 @@ const cartSlice = createSlice({
     },
     setCartOpen: (state, action: PayloadAction<boolean>) => {
       state.cartOpen = action.payload
-    }
+    },
+    cleanCart: (state) => {
+      state.items = []
+    },
   }
 })
 
-export const { addCart, removeCart, removeUnitCart, updateSize, setCartOpen } = cartSlice.actions
+export const { addCart, removeProductCart, removeUnitCart, updateSize, setCartOpen, cleanCart } = cartSlice.actions
 export default cartSlice.reducer

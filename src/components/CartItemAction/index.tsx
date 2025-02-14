@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addCart, removeCart, removeUnitCart, updateSize } from "../../store/reducers/cart"
+import { addCart, removeProductCart, removeUnitCart, updateSize } from "../../store/reducers/cart"
 
 import remove from '../../assets/icons/close.png'
 
@@ -50,7 +50,7 @@ const CartItemAction = ({ item, mode, quantity }: Props) => {
         <option value="l">L</option>
       </S.Size>
       <button type="button">
-        <img src={remove} onClick={() => dispatch(removeCart(item.product))} />
+        <img src={remove} onClick={() => dispatch(removeProductCart(item.product))} />
       </button>
     </S.Action>
   )

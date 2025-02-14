@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from 'yup'
 
+import { useGetUserSessionQuery, useGetUsersQuery } from "../services/api"
+
 import { RootState } from "../store"
 import { useAppDispatch } from "../store/hooks"
+
 import { createOrder } from "../store/reducers/ordersMock"
 import { setAlert } from "../store/reducers/alert"
+import { cleanCart } from "../store/reducers/cart"
 
 import { getQuantity } from "../utils"
-import { useGetUserSessionQuery, useGetUsersQuery } from "../services/api"
 
 export const useCheckoutForm = (paymentMethod: string) => {
   const dispatch = useAppDispatch()
@@ -119,8 +122,6 @@ export const useCheckoutForm = (paymentMethod: string) => {
       ),
     }),
     onSubmit: async (values) => {
-      console.log("Starting form submit")
-      console.log("Form values:", values)
       try {
         const newOrder = {
           user: {
@@ -156,10 +157,10 @@ export const useCheckoutForm = (paymentMethod: string) => {
         }
         const response = await dispatch(createOrder(newOrder)).unwrap()
         if (response) {
+          dispatch(cleanCart())
           navigate(`/order-success/${response.id}`)
         }
       } catch (err) {
-        console.log(err)
         dispatch(setAlert({
           alertOpen: true,
           title: 'Order',
