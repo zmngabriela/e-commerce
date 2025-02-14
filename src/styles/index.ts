@@ -40,13 +40,6 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     text-transform: uppercase;
   }
-
-  input, select {
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
 `
 
 export const Container = styled.div`
@@ -129,7 +122,11 @@ export const Input = styled.input`
   color: ${colors.black};
   font-size: 12px;
   font-weight: 200;
-  border-radius: none;
+
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   &:focus {
     outline: none;
