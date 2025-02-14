@@ -25,34 +25,34 @@ const CartItemAction = ({ item, mode, quantity }: Props) => {
 
   return (
     <S.Action mode={mode}>
-          <S.Quantity>
-            <button onClick={() => (
-              dispatch(addCart({
-                product: item.product,
-                selectedSize: item.selectedSize
-              }))
-            )}>
-              +
-            </button>
-            <p>{quantity}</p>
-            <button onClick={() => dispatch(removeUnitCart(item))}>
-              -
-            </button>
-          </S.Quantity>
-          <S.Size
-            name="size"
-            id="size"
-            onChange={(e) => (handleChangeSize(e.target.value))}
-            defaultValue={item.selectedSize}
-          >
-            <option value="s">S</option>
-            <option value="m">M</option>
-            <option value="l">L</option>
-          </S.Size>
-          <button type="button">
-            <img src={remove} onClick={() => dispatch(removeCart(item.product))} />
-          </button>
-        </S.Action>
+      <S.Quantity>
+        <button onClick={() => (
+          dispatch(addCart({
+            product: item.product,
+            selectedSize: item.selectedSize
+          }))
+        )}>
+          +
+        </button>
+        <p>{quantity}</p>
+        <button onClick={() => dispatch(removeUnitCart(item))}>
+          -
+        </button>
+      </S.Quantity>
+      <S.Size
+        name="size"
+        id="size"
+        onChange={(e) => (handleChangeSize(e.target.value))}
+        defaultValue={item.selectedSize}
+      >
+        <option value="s">S</option>
+        <option value="m">M</option>
+        <option value="l">L</option>
+      </S.Size>
+      <button type="button">
+        <img src={remove} onClick={() => dispatch(removeCart(item.product))} />
+      </button>
+    </S.Action>
   )
 }
 

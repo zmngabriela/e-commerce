@@ -64,7 +64,7 @@ export const ProductInfo = styled.div`
   border-bottom: .8px solid ${colors.black};
 
   img {
-    max-height: 178px;
+    max-height: 179px;
   }
 
   > div {
@@ -79,7 +79,7 @@ export const ProductInfo = styled.div`
     flex-direction: column;
 
     img {
-      width: 100%;
+      width: 99%;
       max-height: none;
     }
   }

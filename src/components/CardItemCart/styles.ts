@@ -20,8 +20,8 @@ export const LinkToProduct = styled(Link)`
   cursor: pointer;
 
   img {
-    height: 100%;
     width: 128px;
+    height: 128px;
   }
 `
 

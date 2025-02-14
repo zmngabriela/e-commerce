@@ -41,10 +41,11 @@ export const GlobalStyle = createGlobalStyle`
     text-transform: uppercase;
   }
 
-  input, select, button {
+  input, select {
     -webkit-border-radius: 0;
     border-radius: 0;
     -webkit-appearance: none;
+    -moz-appearance: none;
   }
 `
 
