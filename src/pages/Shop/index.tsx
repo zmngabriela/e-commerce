@@ -111,7 +111,7 @@ const Shop = () => {
             </S.Pagination>
           </Container>
         ) : (
-          <Container className="central narrow">
+          <Container className="central narrow marginTop">
             <Empty
               noProductsMessage="No product found."
               categoryTitle="You may be interested"

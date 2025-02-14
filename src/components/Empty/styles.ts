@@ -5,7 +5,6 @@ export const Empty = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
 
   font-weight: 200;
   font-size: 12px;
