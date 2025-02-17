@@ -47,7 +47,7 @@ The project is deployed on Vercel and can be accessed here: [E-Commerce Live Dem
 To run the project locally, follow these steps:
 
   ### Clone the repository
-  git clone https://github.com/your-repository-link.git
+  git clone https://github.com/zmngabriela/e-commerce.git
 
   ### Navigate into the project directory
   cd e-commerce
