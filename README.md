@@ -1,4 +1,4 @@
-### E-Commerce Project
+# E-Commerce Project
 
 ## Overview
 This is an e-commerce website built using modern web technologies to provide a smooth shopping experience. The project is still in progress, with future plans to develop a custom backend.
@@ -23,12 +23,12 @@ This is an e-commerce website built using modern web technologies to provide a s
 ## Challenges Faced
 During development, several challenges were encountered and solved:
 
-  # JWT Authentication & Security:
+  ### JWT Authentication & Security:
   Learning JWT authentication significantly improved my understanding of data fetching, middlewares, and social network security.
   Since the API is a third-party service, I had to adapt to its authentication flow.
   Token Handling: The refresh and access tokens are stored on the client side to allow session retrieval. To enhance security, I chose to store them in the application state instead of local storage to prevent XSS attacks, at the cost of losing the session on page reload.
 
-  # Order Creation & Mocking:
+  ### Order Creation & Mocking:
   The API does not support order creation, so I had to mock responses to simulate the order process.
   Product size variations also needed to be simulated, an area that still requires improvement.
 
@@ -44,16 +44,16 @@ The project is deployed on Vercel and can be accessed here: [E-Commerce Live Dem
 ## Installation & Setup
 To run the project locally, follow these steps:
 
-  # Clone the repository
+  ### Clone the repository
   git clone https://github.com/your-repository-link.git
 
-  # Navigate into the project directory
+  ### Navigate into the project directory
   cd e-commerce
 
-  # Install dependencies
+  ### Install dependencies
   npm install
 
-  # Start the development server
+  ### Start the development server
   npm start
 
 ## Scripts
