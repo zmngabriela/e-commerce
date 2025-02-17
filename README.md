@@ -26,7 +26,9 @@ During development, several challenges were encountered and solved:
   ### JWT Authentication & Security:
   Learning JWT authentication significantly improved my understanding of data fetching, middlewares, and social network security.
   Since the API is a third-party service, I had to adapt to its authentication flow.
-  Token Handling: The refresh and access tokens are stored on the client side to allow session retrieval. To enhance security, I chose to store them in the application state instead of local storage to prevent XSS attacks, at the cost of losing the session on page reload.
+
+  ### Token Handling:
+  The refresh and access tokens are stored on the client side to allow session retrieval. To enhance security, I chose to store them in the application state instead of local storage to prevent XSS attacks, at the cost of losing the session on page reload.
 
   ### Order Creation & Mocking:
   The API does not support order creation, so I had to mock responses to simulate the order process.
