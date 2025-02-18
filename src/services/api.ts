@@ -50,10 +50,9 @@ const api = createApi({
     getProducts: builder.query<Product[], ProductFilters>({
       query: (filters) => {
         const params: { [key: string]: any } = {}
-        if (filters.limit) {
-          params.limit = filters.limit
-          params.offset = filters.offset
-        }
+        // offset and limit depend on each other as query args
+        if (filters.limit) params.limit = filters.limit
+        if (filters.limit)  params.offset = filters.offset
         if (filters.title) params.title = filters.title
         if (filters.price_min) params.price_min = filters.price_min
         if (filters.price_max) params.price_max = filters.price_max
