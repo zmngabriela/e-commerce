@@ -5,7 +5,7 @@ import CartWishlist from ".."
 
 import { renderWithProvider } from "../../../utils/tests"
 
-// mocking useNavigate
+// mocking useNavigate hook
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn()
