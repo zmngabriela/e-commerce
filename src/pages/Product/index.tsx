@@ -61,7 +61,7 @@ const ProductPage = () => {
   )
   if (isLoading) return (
     <Container className="central narrow">
-      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} />
+      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} data-testid="spinner" />
     </Container>
   )
 
@@ -128,7 +128,9 @@ const ProductPage = () => {
                       onClick={() => addToCart({
                         product: product,
                         selectedSize: selectedSize
-                      })}>
+                      })}
+                      data-testid="cart-btn"
+                    >
                       Add to cart
                     </Btn>
                   </div>
