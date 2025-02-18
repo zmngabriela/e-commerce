@@ -1,4 +1,4 @@
-import ProductCard from '../../components/CardProduct'
+import CardProduct from '../../components/CardProduct'
 
 import * as S from './styles'
 
@@ -10,7 +10,7 @@ const ProductsList = ({ filteredProducts }: Props) => {
   return (
     <S.Products>
       {filteredProducts?.map((product) => (
-        <ProductCard key={product.id} item={product} />
+        <CardProduct key={product.id} item={product} />
       ))}
     </S.Products>
   )
