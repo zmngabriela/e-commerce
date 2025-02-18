@@ -51,7 +51,7 @@ const Shop = () => {
 
   if (isError) return (
     <Container className="central narrow marginTop">
-      <ErrorText>Something went wrong while loading the products.</ErrorText>
+      <ErrorText data-testid="error-text">Something went wrong while loading the products.</ErrorText>
       {error && (
         <ErrorText>
           Error details:
@@ -63,7 +63,7 @@ const Shop = () => {
   )
   if (isLoading) return (
     <Container className="central narrow">
-      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} />
+      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} data-testid="spinner" />
     </Container>
   )
 
@@ -71,13 +71,13 @@ const Shop = () => {
     <S.Shop>
         {sortedItems && sortedItems.length > 0 ? (
           <Container>
-            <S.Filter>
+            <S.Filter data-testid="filter">
               <div onClick={() => dispatch(setFilterOpen(!filterOpen))}>
                 <button className="btn-filter">Filter and sort</button>
                 <img src={filter} alt="" className="icon"/>
               </div>
             </S.Filter>
-            <ProductsList filteredProducts={sortedItems} />
+            <ProductsList filteredProducts={sortedItems}/>
             <S.Pagination>
               <li>
                 <Btn disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>

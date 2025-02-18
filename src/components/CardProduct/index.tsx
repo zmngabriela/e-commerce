@@ -45,7 +45,7 @@ function CardProduct ({ item }: Props) {
   }
 
   return (
-    <S.Product>
+    <S.Product data-testid="product-item">
       <S.ProductInfo>
         <LazyLoadImage
           src={imgMock}

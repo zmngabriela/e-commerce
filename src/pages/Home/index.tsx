@@ -87,7 +87,7 @@ const Home = () => {
 
   return (
     <S.Home>
-      <S.Hero data-testid="hero-element" >
+      <S.Hero data-testid="hero-element">
         <S.Carousel>
           <img src={images[currentIndex]} alt="Brand" />
           <ul>
