@@ -10,7 +10,7 @@ export const productMock = [
       name: 'Clothes',
       image: 'string'
     },
-    sizes: [''],
+    sizes: ['s', 'm', 'l'],
     creationAt: '2023-09-20T10:00:00Z',
     updatedAt: ''
   },
@@ -25,7 +25,7 @@ export const productMock = [
       name: 'Clothes',
       image: 'string'
     },
-    sizes: [''],
+    sizes: ['s', 'm', 'l'],
     creationAt: '2023-05-15T10:00:00Z',
     updatedAt: ''
   },
@@ -40,7 +40,7 @@ export const productMock = [
       name: 'Clothes',
       image: 'string'
     },
-    sizes: [''],
+    sizes: ['s', 'm', 'l'],
     creationAt: '2023-03-19T10:00:00Z',
     updatedAt: ''
   },
@@ -55,7 +55,7 @@ export const productMock = [
       name: 'Clothes',
       image: 'string'
     },
-    sizes: [''],
+    sizes: ['s', 'm', 'l'],
     creationAt: '2023-01-02T10:00:00Z',
     updatedAt: ''
   },
@@ -70,7 +70,7 @@ export const productMock = [
       name: 'Clothes',
       image: 'string'
     },
-    sizes: [''],
+    sizes: ['s', 'm', 'l'],
     creationAt: '2023-12-01T10:00:00Z',
     updatedAt: ''
   },
