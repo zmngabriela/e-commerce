@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setFilterOpen, setLimit, setOffset, setPriceMax, setPriceMin, setSortBy } from '../../store/reducers/filter'
+import { setCurrentPage, setFilterOpen, setLimit, setOffset, setPriceMax, setPriceMin, setSortBy } from '../../store/reducers/filter'
 import { RootState } from '../../store'
 
 import close from '../../assets/icons/close.png'
@@ -30,6 +30,12 @@ const AsideFilter = () => {
     }
   }, [])
 
+  const changeProductPerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setLimit(Number(e.target.value)))
+    dispatch(setOffset(0))
+    dispatch(setCurrentPage(1))
+  }
+
   const closeFilter = () => {
     dispatch(setFilterOpen(false))
     setSortByOpen(false)
@@ -56,10 +62,7 @@ const AsideFilter = () => {
           <S.OptionOpen>
             <select
               value={limit}
-              onChange={(e) => {
-                dispatch(setLimit(Number(e.target.value)))
-                dispatch(setOffset(0))
-              }}
+              onChange={(e) => changeProductPerPage(e)}
             >
               <option value={8}>8</option>
               <option value={12}>12</option>
