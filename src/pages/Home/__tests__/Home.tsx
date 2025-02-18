@@ -6,112 +6,7 @@ import 'intersection-observer';
 import Home from ".."
 
 import { renderWithProvider } from "../../../utils/tests"
-
-const categoryMock = [
-  {
-    id: 1,
-    name: 'Clothes',
-    image: ''
-  },
-  {
-    id: 2,
-    name: 'Electronics',
-    image: ''
-  },
-  {
-    id: 3,
-    name: 'Furniture',
-    image: ''
-  },
-  {
-    id: 4,
-    name: 'Shoes',
-    image: ''
-  },
-  {
-    id: 5,
-    name: 'Miscellaneous',
-    image: ''
-  }
-]
-
-const productMock = [
-  {
-    id: 1,
-    title: 'T-shirt',
-    price: 29,
-    description: 'T-shirt',
-    images: [''],
-    category: {
-      id: 1,
-      name: 'Clothes',
-      image: 'string'
-    },
-    sizes: [''],
-    creationAt: '',
-    updatedAt: ''
-  },
-  {
-    id: 2,
-    title: 'T-shirt',
-    price: 29,
-    description: 'T-shirt',
-    images: [''],
-    category: {
-      id: 1,
-      name: 'Clothes',
-      image: 'string'
-    },
-    sizes: [''],
-    creationAt: '',
-    updatedAt: ''
-  },
-  {
-    id: 3,
-    title: 'T-shirt',
-    price: 29,
-    description: 'T-shirt',
-    images: [''],
-    category: {
-      id: 1,
-      name: 'Clothes',
-      image: 'string'
-    },
-    sizes: [''],
-    creationAt: '',
-    updatedAt: ''
-  },
-  {
-    id: 4,
-    title: 'T-shirt',
-    price: 29,
-    description: 'T-shirt',
-    images: [''],
-    category: {
-      id: 1,
-      name: 'Clothes',
-      image: 'string'
-    },
-    sizes: [''],
-    creationAt: '',
-    updatedAt: ''
-  },
-  {
-    id: 5,
-    title: 'T-shirt',
-    price: 29,
-    description: 'T-shirt',
-    images: [''],
-    category: {
-      id: 1,
-      name: 'Clothes',
-      image: 'string'
-    },
-    sizes: [''],
-    creationAt: '',
-    updatedAt: ''
-  },
-]
+import { categoryMock, productMock } from "../../../utils/testsMocks";
 
 const server = setupServer(
   rest.get('https://api.escuelajs.co/api/v1/categories', (req, res, ctx) => {
@@ -152,9 +47,7 @@ describe('Tests for Home component', () => {
         return res(ctx.status(500), ctx.json({ message: 'Internal Server Error' }))
       })
     )
-
     renderWithProvider(<Home />)
-
     await waitFor(() => {
       expect(screen.getByText('Something went wrong while loading the categories.')).toBeInTheDocument()
       expect(screen.getByText('Error details:')).toBeInTheDocument()
@@ -168,9 +61,7 @@ describe('Tests for Home component', () => {
         return res(ctx.status(404), ctx.json({ message: 'Not Found' }))
       })
     )
-
     renderWithProvider(<Home />)
-
     await waitFor(() => {
       expect(screen.getByText('Something went wrong while loading the products.')).toBeInTheDocument()
       expect(screen.getByText('Error details:')).toBeInTheDocument()
