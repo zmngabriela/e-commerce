@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { BarLoader } from 'react-spinners'
-import { useNavigate } from 'react-router-dom'
 
 import ContainerProfile from '../../containers/ContainerProfile'
 import ContainerOrders from '../../containers/ContainerOrders'
 
 import api, { useGetUserSessionQuery, useGetUsersQuery } from '../../services/api'
-import { setAlert } from '../../store/reducers/alert'
 import { logOut } from '../../store/reducers/auth'
 
 import { colors, Container, ErrorText } from "../../styles"
@@ -21,38 +19,34 @@ export type ProfileProps = {
 
 const Profile = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const [navTab, setNavTab] = useState<NavTab>('profile')
 
   const {data: user, isLoading: isLoadingSession, isError: isErrorSession, error: errorSession} = useGetUserSessionQuery()
-  const userFound = useGetUsersQuery().data?.find(u => u.id === user?.id)
+  const {data: usersList, isLoading: isLoadingUsers, isError: isErrorUsers, error: errorUsers} = useGetUsersQuery()
+  const userFound = usersList?.find(u => u.id === user?.id)
 
   const hangleLogout = () => {
     dispatch(logOut())
     dispatch(api.util.resetApiState())
   }
 
-  if (isErrorSession) {
-    dispatch(setAlert({
-      alertOpen: true,
-      title: 'Profile',
-      message: `
-        Something went wrong while loading the profile.
-        ${errorSession && (
-          <ErrorText>
-            {'status' in errorSession && <span>Status: {errorSession.status}</span>}
-            {'message' in errorSession && <span>- {errorSession.message}</span>}
-          </ErrorText>
-        )}
-      `
-    }))
-    navigate(-1)
-  }
+  if (isErrorSession || isErrorUsers) return (
+    <Container className="central narrow marginTop">
+      <ErrorText>Something went wrong while loading the profile.</ErrorText>
+      {errorSession && (
+        <ErrorText>
+          Error details:
+          {'status' in errorSession && <span> {errorSession.status} </span>}
+          {'message' in errorSession && <span>{errorSession.message}</span>}
+        </ErrorText>
+      )}
+    </Container>
+  )
 
-  if (isLoadingSession) return (
+  if (isLoadingSession || isLoadingUsers) return (
     <Container className="central narrow">
-      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} />
+      <BarLoader color={colors.black} height={2} cssOverride={{marginTop: '80px'}} data-testid="spinner" />
     </Container>
   )
 
@@ -63,6 +57,7 @@ const Profile = () => {
           <button
             type="button"
             onClick={() => setNavTab('profile')}
+            data-testid="profile-btn"
           >
             Profile
           </button>
@@ -82,7 +77,7 @@ const Profile = () => {
         <ContainerOrders user={userFound as User}/>
       )}
       <S.Logout>
-        <button type='button' onClick={hangleLogout} className='logout-btn'>
+        <button type='button' onClick={hangleLogout} className='logout-btn' data-testid="logout-btn">
           Logout
         </button>
       </S.Logout>

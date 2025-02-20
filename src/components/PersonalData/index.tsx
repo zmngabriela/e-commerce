@@ -56,6 +56,7 @@ const PersonalData = () => {
             onChange={form.handleChange}
             onBlur={form.handleBlur}
             className={isEditing['name'] ? 'editing' : ''}
+            data-testid="name-input"
           />
         </div>
         <BtnArrow
