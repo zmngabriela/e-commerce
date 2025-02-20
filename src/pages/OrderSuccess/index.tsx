@@ -24,7 +24,7 @@ const OrderSuccess = () => {
   const { data: products } = useGetProductsQuery({ categoryId: 2})
 
   return (
-    <Container className="central narrow">
+    <Container className="central narrow" data-testid="container">
       {order ? (
         <S.Content>
           <img className="icon" src={bag} alt="" />

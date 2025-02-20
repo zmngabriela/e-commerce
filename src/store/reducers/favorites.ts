@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type FavoritesState = {
+export type FavoritesState = {
   favoritesList: Product[]
 }
 

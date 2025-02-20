@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fakeApiCreateOrder } from "../../services/mockApi"
 
-type OrdersState = {
+export type OrdersState = {
   orders: OrderAnswer[]
   isLoading: boolean
   error: string | null

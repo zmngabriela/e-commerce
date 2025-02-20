@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type AlertState = {
+export type AlertState = {
   alertOpen: boolean
   title: string
   message: string

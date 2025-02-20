@@ -5,7 +5,7 @@ type CartItem = {
   selectedSize: string
 }
 
-type CartState = {
+export type CartState = {
   items: CartItem[]
   cartOpen: boolean
 }

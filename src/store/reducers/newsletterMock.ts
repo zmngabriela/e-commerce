@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type NewsletterState = {
+export type NewsletterState = {
   newsletterList: string[]
 }
 

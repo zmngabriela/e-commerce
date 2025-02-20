@@ -1,4 +1,13 @@
+import { RootState } from "../store"
+import { AlertState } from "../store/reducers/alert"
+import { AuthState } from "../store/reducers/auth"
+import { CartState } from "../store/reducers/cart"
+import { FavoritesState } from "../store/reducers/favorites"
+import { FilterState } from "../store/reducers/filter"
+import { NewsletterState } from "../store/reducers/newsletterMock"
+
 import { defaultAvatar } from "."
+import api from "../services/api"
 
 export const productMock = [
   {
@@ -124,7 +133,7 @@ export const usersMock = [
   }
 ]
 
-export const ordersMock = [
+export const ordersMock: Order[] = [
   {
     user: {
       name: 'John Doe',
@@ -247,11 +256,11 @@ export const ordersMock = [
   },
 ]
 
-export const orderAnswerMock = [
+export const orderAnswerMock: OrderAnswer[] = [
   {
     id: 1,
-    status: 'delivered',
-    createdAt: '2025-02-18T10:00:00Z',
+    status: 'paid',
+    createdAt: () => '2025-02-18T10:00:00Z',
     totalAmount: 150.75,
     trackingCode: 'TRACK123456',
     user: {
@@ -296,7 +305,7 @@ export const orderAnswerMock = [
   {
     id: 2,
     status: 'pending',
-    createdAt: '2025-02-17T15:30:00Z',
+    createdAt: () => '2025-02-17T15:30:00Z',
     totalAmount: 75.00,
     trackingCode: 'TRACK654321',
     user: {
@@ -340,8 +349,8 @@ export const orderAnswerMock = [
   },
   {
     id: 3,
-    status: 'returned',
-    createdAt: '2025-02-16T08:45:00Z',
+    status: 'paid',
+    createdAt: () => '2025-02-16T08:45:00Z',
     totalAmount: 200.00,
     trackingCode: 'TRACK789012',
     user: {
@@ -384,3 +393,18 @@ export const orderAnswerMock = [
     },
   },
 ]
+
+export const storeMock: Partial<RootState> = {
+  orders: {
+    orders: orderAnswerMock,
+    isLoading: false,
+    error: null
+  },
+  cart: {} as CartState,
+  filter: {} as FilterState,
+  favorites: {} as FavoritesState,
+  alert: {} as AlertState,
+  newsletter: {} as NewsletterState,
+  auth: {} as AuthState,
+  [api.reducerPath]: {} as ReturnType<typeof api.reducer>
+}

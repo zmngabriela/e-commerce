@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type FilterState = {
+export type FilterState = {
   term?: string
   category: number
   sortBy?: 'asc' | 'desc' | 'latest' | ''
