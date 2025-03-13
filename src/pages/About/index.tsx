@@ -2,6 +2,8 @@ import react from '../../assets/icons/react.png'
 import redux from '../../assets/icons/redux.png'
 import typescript from '../../assets/icons/typescript.png'
 import styledComponents from '../../assets/icons/styled-components.svg'
+import platzi from '../../assets/icons/platzi.png'
+import jest from '../../assets/icons/jest.svg'
 
 import * as S from './styles'
 import { Container } from '../../styles'
@@ -20,13 +22,15 @@ const About = () => (
         A perfect blend for creating quality projects with a a styled design touch.
       </S.Text>
       <S.Icons>
-        <img src={react} alt="React" />
-        <img src={redux} alt="Redux" />
-        <img src={typescript} alt="Typescript" />
-        <img src={styledComponents} alt="Styled Components" />
+        <img src={react} alt="React" title='React'/>
+        <img src={redux} alt="Redux" title='Redux'/>
+        <img src={typescript} alt="Typescript" title='TypeScript' />
+        <img src={styledComponents} alt="Styled Components" title='Styled Components' />
+        <img src={platzi} alt="Platzi Fake API" title='Platzi Fake API' />
+        <img src={jest} alt="Jest" title='Jest Testing' />
       </S.Icons>
       <S.Text>
-        The technologies used in this project include React with Redux for state management, TypeScript for static typing, and styled-components for dynamic styling. Jest and Testing Library are used for testing, although testing is still a work in progress.
+        The technologies used in this project include React with Redux for state management, TypeScript for static typing, and styled-components for dynamic styling. Jest and Testing Library are used for testing, although testing is still a work in progress. I will include Cypress tests and add more Jest testing coverage.
         <br />
         <br />
         The e-commerce website is powered by the Rest <a href="https://fakeapi.platzi.com/" target='_blank'>Platzi Fake Store API</a>, which is used for fetching product and user data, implementing JWT authentication, and handling pagination.
