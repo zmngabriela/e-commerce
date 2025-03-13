@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+
 import react from '../../assets/icons/react.png'
 import redux from '../../assets/icons/redux.png'
 import typescript from '../../assets/icons/typescript.png'
@@ -8,8 +10,27 @@ import jest from '../../assets/icons/jest.svg'
 import * as S from './styles'
 import { Container } from '../../styles'
 
-const About = () => (
-  <Container className='central narrow'>
+const About = () => {
+  const iconsData = [
+    { src: react, alt: "React", title: "React" },
+    { src: redux, alt: "Redux", title: "Redux" },
+    { src: typescript, alt: "Typescript", title: "TypeScript" },
+    { src: styledComponents, alt: "Styled Components", title: "Styled Components" },
+    { src: jest, alt: "Jest", title: "Jest Testing" },
+    { src: platzi, alt: "Platzi Fake API", title: "Platzi Fake API" }
+  ]
+
+  const iconAnimation = {
+    animate: { y: [-3, 3, -3] },
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+
+  return (
+    <Container className='central narrow'>
       <S.Text>
         Gabriela is a Java Full Stack Developer student.
         <br />
@@ -22,12 +43,19 @@ const About = () => (
         A perfect blend for creating quality projects with a a styled design touch.
       </S.Text>
       <S.Icons>
-        <img src={react} alt="React" title='React'/>
-        <img src={redux} alt="Redux" title='Redux'/>
-        <img src={typescript} alt="Typescript" title='TypeScript' />
-        <img src={styledComponents} alt="Styled Components" title='Styled Components' />
-        <img src={platzi} alt="Platzi Fake API" title='Platzi Fake API' />
-        <img src={jest} alt="Jest" title='Jest Testing' />
+        {iconsData.map((icon, index) => (
+          <motion.img
+            key={index}
+            src={icon.src}
+            alt={icon.alt}
+            title={icon.title}
+            animate={iconAnimation.animate}
+            transition={{
+              ...iconAnimation.transition,
+              delay: index * 0.5
+            }}
+          />
+        ))}
       </S.Icons>
       <S.Text>
         The technologies used in this project include React with Redux for state management, TypeScript for static typing, and styled-components for dynamic styling. Jest and Testing Library are used for testing, although testing is still a work in progress. I will include Cypress tests and add more Jest testing coverage.
@@ -43,7 +71,8 @@ const About = () => (
         <br />
         Form management and validation are handled using Formik and Yup.
       </S.Text>
-  </Container>
-)
+    </Container>
+  )
+}
 
 export default About
