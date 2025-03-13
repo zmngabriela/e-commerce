@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import * as motion from "motion/react-client"
 import type { Variants } from "motion/react"
 
-import logo from '../../assets/images/platzi.png'
+import logo from '../../assets/icons/platzi.png'
 
 import * as S from "./styles"
 import { Btn } from "../../styles"

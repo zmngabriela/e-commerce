@@ -10,7 +10,6 @@ import { useGetCategoriesQuery, useGetProductsQuery } from "../../services/api";
 import { setTerm } from "../../store/reducers/filter";
 
 import banner from '../../assets/images/banner.png'
-import banner2 from '../../assets/images/banner2.png'
 import furniture from '../../assets/images/furniture.webp'
 import smallScreenBanner from '../../assets/images/shoe.jpg'
 import smallScreenBanner2 from '../../assets/images/lamps.jpg'
@@ -40,7 +39,7 @@ const Home = () => {
 
   const images = smallScreen
     ? [smallScreenBanner, furniture, smallScreenBanner2]
-    : [banner, furniture, banner2]
+    : [furniture, banner]
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
